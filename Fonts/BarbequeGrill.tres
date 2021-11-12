@@ -3,4 +3,6 @@
 [ext_resource path="res://Fonts/BarbequeGrill.ttf" type="DynamicFontData" id=1]
 
 [resource]
+size = 72
+use_mipmaps = true
 font_data = ExtResource( 1 )

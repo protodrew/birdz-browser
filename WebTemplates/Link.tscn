@@ -3,7 +3,7 @@
 [ext_resource path="res://Scripts/Link.gd" type="Script" id=1]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 40.6307, 28.3093 )
+extents = Vector2( 148.492, 37.4583 )
 
 [node name="Link" type="Node2D"]
 script = ExtResource( 1 )
