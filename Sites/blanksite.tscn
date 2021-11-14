@@ -5,16 +5,16 @@
 [node name="blanksite" type="Node2D"]
 
 [node name="ColorRect" type="ColorRect" parent="."]
-margin_left = -23.0
-margin_top = -39.0
-margin_right = 1409.0
-margin_bottom = 1423.0
+margin_left = -54.1128
+margin_top = -30.5146
+margin_right = 1377.89
+margin_bottom = 1431.49
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2( 897.674, -124.018 )
+position = Vector2( 626.145, 337.015 )
 current = true
 limit_left = 0
 limit_top = 0
