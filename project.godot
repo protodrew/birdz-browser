@@ -51,7 +51,15 @@ _global_script_class_icons={
 [application]
 
 config/name="Friendly Internet Neighborhoods"
+run/main_scene="res://Scenes/2D Navigation.tscn"
 config/icon="res://icon.png"
+
+[display]
+
+window/size/width=1280
+window/size/height=720
+mouse_cursor/custom_image="res://Images/cursor.png"
+mouse_cursor/custom_image_hotspot=Vector2( 11, 9 )
 
 [editor_plugins]
 

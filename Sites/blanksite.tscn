@@ -1,0 +1,23 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Scripts/webcamera.gd" type="Script" id=1]
+
+[node name="blanksite" type="Node2D"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_left = -23.0
+margin_top = -39.0
+margin_right = 1409.0
+margin_bottom = 1423.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 897.674, -124.018 )
+current = true
+limit_left = 0
+limit_top = 0
+limit_right = 1280
+limit_bottom = 1423
+script = ExtResource( 1 )

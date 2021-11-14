@@ -4,7 +4,8 @@ extends Node2D
 onready var navhandler = self.get_parent().get_parent() # moves 2 levels up in the hierarchy to interact with the next level
 onready var collider = $Area2D
 onready var groups = self.get_groups()
-# TODO the implementation was broken somehow, will fix after dinner
+
+
 func _on_Area2D_input_event(_viewport, event, _shape_idx): # underscores mean it won't throw errors
 	if (event is InputEventMouseButton && event.pressed): # ensures we are inside the area and clicking
 		var moved = false
