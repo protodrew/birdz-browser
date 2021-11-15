@@ -1,0 +1,84 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Scenes/playgame.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scenes/player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scripts/gamebox.gd" type="Script" id=5]
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 9.92435, 243.977 )
+
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 592.387, 17.8459 )
+
+[node name="celestial gamebox" type="Node2D"]
+script = ExtResource( 5 )
+
+[node name="walls" type="Node2D" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="walls"]
+margin_left = 30.0
+margin_top = 761.0
+margin_right = 40.0
+margin_bottom = 1235.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="walls/ColorRect"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="walls/ColorRect/StaticBody2D"]
+position = Vector2( -0.0756531, 233.977 )
+shape = SubResource( 5 )
+
+[node name="ColorRect3" type="ColorRect" parent="walls"]
+margin_left = 30.0
+margin_top = 761.0
+margin_right = 1200.0
+margin_bottom = 774.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="walls/ColorRect3"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="walls/ColorRect3/StaticBody2D"]
+position = Vector2( 589.447, 7.76026 )
+shape = SubResource( 6 )
+
+[node name="ColorRect4" type="ColorRect" parent="walls"]
+margin_left = 30.0
+margin_top = 1225.0
+margin_right = 1203.0
+margin_bottom = 1234.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="walls/ColorRect4"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="walls/ColorRect4/StaticBody2D"]
+position = Vector2( 589.447, 1.42456 )
+shape = SubResource( 6 )
+
+[node name="ColorRect2" type="ColorRect" parent="walls"]
+margin_left = 1196.0
+margin_top = 761.0
+margin_right = 1205.0
+margin_bottom = 1233.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="walls/ColorRect2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="walls/ColorRect2/StaticBody2D"]
+position = Vector2( 8.40958, 231.148 )
+shape = SubResource( 5 )
+
+[node name="player" parent="." instance=ExtResource( 2 )]
+
+[node name="play" parent="." instance=ExtResource( 1 )]
