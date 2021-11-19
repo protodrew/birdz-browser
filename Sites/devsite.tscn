@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Scripts/webcamera.gd" type="Script" id=1]
 [ext_resource path="res://Fonts/Roboto.ttf" type="DynamicFontData" id=2]
@@ -6,7 +6,6 @@
 [ext_resource path="res://Scripts/devsite.gd" type="Script" id=4]
 [ext_resource path="res://Scenes/celestial gamebox.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Scenes/asteroid.tscn" type="PackedScene" id=6]
-[ext_resource path="res://WebTemplates/Link.tscn" type="PackedScene" id=7]
 
 [sub_resource type="DynamicFont" id=1]
 size = 96
@@ -25,20 +24,20 @@ font_data = ExtResource( 2 )
 default_font = SubResource( 3 )
 
 [node name="devsite" type="Node2D"]
+position = Vector2( 0, 125.318 )
 script = ExtResource( 4 )
 
 [node name="ColorRect" type="ColorRect" parent="."]
-margin_left = -29.2363
-margin_top = -45.2363
-margin_right = 1402.76
-margin_bottom = 1416.76
+margin_left = -32.7712
+margin_top = -90.456
+margin_right = 1399.23
+margin_bottom = 1371.54
 mouse_filter = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2( 635.61, 92.6884 )
 current = true
 limit_left = 0
 limit_top = 0
@@ -48,9 +47,10 @@ script = ExtResource( 1 )
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 modulate = Color( 0, 0, 0, 1 )
-margin_left = 3.0
-margin_right = 994.0
-margin_bottom = 147.0
+margin_left = 0.880983
+margin_top = -38.1406
+margin_right = 991.881
+margin_bottom = 108.859
 theme = SubResource( 2 )
 text = "Johnathan Harrington"
 __meta__ = {
@@ -59,10 +59,10 @@ __meta__ = {
 
 [node name="RichTextLabel3" type="RichTextLabel" parent="."]
 modulate = Color( 0, 0, 0, 1 )
-margin_left = 10.1271
-margin_top = 224.506
-margin_right = 1001.13
-margin_bottom = 371.506
+margin_left = 8.00808
+margin_top = 186.365
+margin_right = 999.011
+margin_bottom = 333.365
 theme = SubResource( 2 )
 text = "What is Birdz?"
 __meta__ = {
@@ -70,23 +70,23 @@ __meta__ = {
 }
 
 [node name="DevTpdne" type="Sprite" parent="."]
-position = Vector2( 1140.97, 157.446 )
+position = Vector2( 1138.85, 119.305 )
 scale = Vector2( -0.265, 0.265 )
 texture = ExtResource( 3 )
 
 [node name="RichTextLabel2" type="RichTextLabel" parent="."]
 modulate = Color( 0, 0, 0, 1 )
-margin_left = 25.0
-margin_top = 123.0
-margin_right = 946.0
-margin_bottom = 686.0
+margin_left = 22.881
+margin_top = 84.8594
+margin_right = 943.881
+margin_bottom = 647.859
 theme = SubResource( 4 )
-text = "birdz browser and neo-neighbor lead developer. Profieient in 
+text = "birdz browser and neo-neighbor lead developer. Proficient in 
 Trinity Engine, Emblem Pro, Onyx, Para-3, & Cobolt.
 
 
-                                                                                      <-- click here to find out!
-
+                                                    
+													
 
 This new revolutionary protocol will change the way we communicate, learn, and play; all managed by our amazing VIA. To demonstrate the power of neo-neighbor websites and the Trinity Engine, I have made a video game that you can play right here in birdz without even downloading!"
 __meta__ = {
@@ -94,12 +94,10 @@ __meta__ = {
 }
 
 [node name="celestial gamebox" parent="." instance=ExtResource( 5 )]
+position = Vector2( 90.6392, 768.142 )
 
 [node name="asteroid" parent="celestial gamebox" instance=ExtResource( 6 )]
-position = Vector2( 1130.19, 863.306 )
+position = Vector2( 1054.68, 145.962 )
 
 [node name="asteroid2" parent="celestial gamebox" instance=ExtResource( 6 )]
-position = Vector2( 1126.63, 1043.27 )
-
-[node name="Link" parent="." instance=ExtResource( 7 )]
-position = Vector2( 323.464, 280.653 )
+position = Vector2( 1051.12, 325.926 )

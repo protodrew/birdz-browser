@@ -15,11 +15,10 @@ func play():
 	playing = true
 
 func lose():
-	var children = self.get_children()
-	for i in children:
-		playing = false
-		if children[i].name == "player" or "asteroid":
-			remove_child(i)
+	playing = false
+	for child in get_children():
+		if child.name == "player" or "asteroid":
+			child.queue_free()
 
 func _process(delta):
 	if Input.is_action_just_pressed("pause") and playing:
@@ -41,7 +40,8 @@ func _process(delta):
 		
 			
 	else:
-		$player.cancontrol = false
+		if(get_node_or_null("res://Scenes/player.tscn")):
+			$player.cancontrol = false
 
 func wait(s):
 	var t = Timer.new()

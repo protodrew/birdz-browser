@@ -7,11 +7,17 @@ onready var groups = self.get_groups()
 
 
 func _on_Area2D_input_event(_viewport, event, _shape_idx): # underscores mean it won't throw errors
-	if (event is InputEventMouseButton && event.pressed && event.button_index == 1): # ensures we are inside the area and clicking
+	if event is InputEventMouseButton and event.pressed and event.button_index == 1: # ensures we are inside the area and clicking
 		var moved = false
 		for index in groups.size():
 			if "page" in groups[index]:
-				navhandler.movepage(groups[index].substr(5))
+				var pgname = groups[index].substr(5)
+				if pgname == "Hub" or "exit":
+					navhandler.movepage(groups[index].substr(5))
+				else:
+					navhandler.get_parent().movepage(pgname)
+					
+					
 				moved = true
 		if !moved:
 			print("error no page group")

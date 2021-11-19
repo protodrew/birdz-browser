@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/blockout.png-3eeb379e9214e861a8804998fa9a1afd.stex"
+path="res://.import/squeesh.png-03eb3a20c27ccaef00fd8b9e9d1ea4bf.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Images/blockout.png"
-dest_files=[ "res://.import/blockout.png-3eeb379e9214e861a8804998fa9a1afd.stex" ]
+source_file="res://Images/squeesh.png"
+dest_files=[ "res://.import/squeesh.png-03eb3a20c27ccaef00fd8b9e9d1ea4bf.stex" ]
 
 [params]
 

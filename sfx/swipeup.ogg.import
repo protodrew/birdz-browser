@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/swipeup.ogg-b0ebd313307fae12fe8f6f37110f1c7e.oggstr"
+
+[deps]
+
+source_file="res://sfx/swipeup.ogg"
+dest_files=[ "res://.import/swipeup.ogg-b0ebd313307fae12fe8f6f37110f1c7e.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
