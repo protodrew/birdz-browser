@@ -3,7 +3,7 @@
 [ext_resource path="res://Scripts/webcamera.gd" type="Script" id=1]
 [ext_resource path="res://Fonts/Roboto.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://Images/dev TPDNE.jpeg" type="Texture" id=3]
-[ext_resource path="res://Sites/devsite.gd" type="Script" id=4]
+[ext_resource path="res://Scripts/devsite.gd" type="Script" id=4]
 [ext_resource path="res://Scenes/celestial gamebox.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Scenes/asteroid.tscn" type="PackedScene" id=6]
 [ext_resource path="res://WebTemplates/Link.tscn" type="PackedScene" id=7]

@@ -8,11 +8,10 @@ script = ExtResource( 2 )
 
 [node name="Hub" parent="." instance=ExtResource( 1 )]
 
-[node name="Link" parent="Hub" index="1"]
-position = Vector2( 729.306, 660.052 )
+[node name="Link" parent="Hub" index="1" groups=["page devsite"]]
+position = Vector2( 717.992, 655.809 )
 
 [node name="CollisionShape2D" parent="Hub/Link/Area2D" index="0"]
 position = Vector2( -68.0443, 0 )
 
 [editable path="Hub"]
-[editable path="Hub/Link"]
