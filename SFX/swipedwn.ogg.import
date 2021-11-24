@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/swipedwn.ogg-27ee06ed3f7f92463373c7ab50fff202.oggstr"
+
+[deps]
+
+source_file="res://SFX/swipedwn.ogg"
+dest_files=[ "res://.import/swipedwn.ogg-27ee06ed3f7f92463373c7ab50fff202.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

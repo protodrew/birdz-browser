@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/exit.ogg-82f6d530b8683fbe9966710bbc4cf1d2.oggstr"
+
+[deps]
+
+source_file="res://SFX/exit.ogg"
+dest_files=[ "res://.import/exit.ogg-82f6d530b8683fbe9966710bbc4cf1d2.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

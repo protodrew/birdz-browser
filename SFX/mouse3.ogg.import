@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/mouse3.ogg-5539cc9638d29fb08db36c231a9e1e0b.oggstr"
+
+[deps]
+
+source_file="res://SFX/mouse3.ogg"
+dest_files=[ "res://.import/mouse3.ogg-5539cc9638d29fb08db36c231a9e1e0b.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/dwn6.ogg-86bbf98e9b5875bd136b2959b70c4978.oggstr"
+
+[deps]
+
+source_file="res://SFX/dwn6.ogg"
+dest_files=[ "res://.import/dwn6.ogg-86bbf98e9b5875bd136b2959b70c4978.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
