@@ -27,16 +27,27 @@ func _process(delta):
 	
 	if playing:
 		if spawn:
-			var size = rand_range(1,6)
-			var enemies = []
-			for i in enemies:
-				enemies[i] = asteroid.instance()
-				enemies[i].set_pos(Vector2(1200,rand_range(875,1200)))
+			
+			var size = (randi()%5)+1
+			print(size)
+			
+			for i in size:
+				var asteroidn = asteroid.instance()
+				add_child(asteroidn)
+				asteroidn.set_pos(Vector2(1200,rand_range(875,1200)))
+				print("spawned "+i)
 			spawn = false;
+			
 		else:
-			wait(1.5)
+			var t = Timer.new()
+			t.set_wait_time(3)
+			t.set_one_shot(false)
+			self.add_child(t)
+			t.start()
+			yield(t, "timeout")
+			#t.queue_free()
 			spawn = true;
-		$player.cancontrol = true
+			$player.cancontrol = true
 		
 			
 	else:
@@ -44,10 +55,4 @@ func _process(delta):
 			$player.cancontrol = false
 
 func wait(s):
-	var t = Timer.new()
-	t.set_wait_time(s)
-	t.set_one_shot(true)
-	self.add_child(t)
-	t.start()
-	yield(t, "timeout")
-	t.queue_free()
+	pass
