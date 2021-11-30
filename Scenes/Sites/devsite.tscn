@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Scripts/webcamera.gd" type="Script" id=1]
 [ext_resource path="res://Fonts/Roboto.ttf" type="DynamicFontData" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Scripts/devsite.gd" type="Script" id=4]
 [ext_resource path="res://Scenes/celestial gamebox.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Scenes/asteroid.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Scenes/WebTemplates/Taskbar.tscn" type="PackedScene" id=7]
 
 [sub_resource type="DynamicFont" id=1]
 size = 96
@@ -101,3 +102,6 @@ position = Vector2( 1054.68, 145.962 )
 
 [node name="asteroid2" parent="celestial gamebox" instance=ExtResource( 6 )]
 position = Vector2( 1051.12, 325.926 )
+
+[node name="Taskbar" parent="." instance=ExtResource( 7 )]
+position = Vector2( 643.309, -104.887 )
