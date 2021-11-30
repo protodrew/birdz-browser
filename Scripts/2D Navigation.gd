@@ -24,7 +24,7 @@ func movepage(var pgto):
 		
 		
 	else:
-		var page = "res://Sites/"+pgto+".tscn"
+		var page = "res://Scenes/Sites/"+pgto+".tscn"
 		print(page)
 		
 		clear()
