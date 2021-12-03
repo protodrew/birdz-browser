@@ -1,7 +1,7 @@
 extends Node2D
 onready var sfx = $sfx
 onready var url = $url
-	
+onready var last = "Hub"
 # This will be used to transfer pages to other pages in the 2D web sections of the game
 func _input(event):
 	if event is InputEventMouseButton and event.pressed and event.button_index == 1:
@@ -19,6 +19,12 @@ func movepage(var pgto):
 		door.loop = false;
 		sfx.set_stream(door)
 		sfx.play()
+	elif pgto == "back":
+		var page = "res://Scenes/Sites/"+last+".tscn"
+		url.set_text("https://"+last+".bird")
+		clear()
+		add_child(load(page).instance())
+		
 		
 		
 	else:
@@ -31,6 +37,7 @@ func movepage(var pgto):
 func clear():
 	for child in get_children(): # parses through all children
 		if !child.is_in_group("keep"): # passes over all of the nodes we don't want to remove
+				last = child.name
 				self.remove_child(child) # removes the rest
 		
 

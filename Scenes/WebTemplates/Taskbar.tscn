@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scripts/Link.gd" type="Script" id=1]
 [ext_resource path="res://Art/taskbar.png" type="Texture" id=2]
+[ext_resource path="res://Art/back.png" type="Texture" id=3]
 
 [sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 21.362, 16.2988 )
@@ -39,5 +40,26 @@ __meta__ = {
 position = Vector2( -283.356, -19.9173 )
 shape = SubResource( 6 )
 
+[node name="Link2" type="Node2D" parent="." groups=["page back"]]
+visible = false
+position = Vector2( -246.527, 18.7383 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Area2D" type="Area2D" parent="Link2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Link2/Area2D"]
+position = Vector2( -283.356, -19.9173 )
+shape = SubResource( 6 )
+
+[node name="Back" type="Sprite" parent="."]
+visible = false
+position = Vector2( -528.754, 0.155045 )
+scale = Vector2( 0.608005, 0.608005 )
+texture = ExtResource( 3 )
+
 [connection signal="input_event" from="exit/Area2D" to="exit" method="_on_Area2D_input_event"]
 [connection signal="input_event" from="Link/Area2D" to="Link" method="_on_Area2D_input_event"]
+[connection signal="input_event" from="Link2/Area2D" to="Link2" method="_on_Area2D_input_event"]
