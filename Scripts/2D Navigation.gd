@@ -16,8 +16,8 @@ func movepage(var pgto):
 	if pgto == "exit":
 		
 		var door = load("res://sfx/exit.ogg")
-		door.loop = false; # disables looping
-		sfx.set_stream(door) # adds the mouse sound to the audio player
+		door.loop = false;
+		sfx.set_stream(door)
 		sfx.play()
 		
 		
@@ -29,10 +29,9 @@ func movepage(var pgto):
 		add_child(load(page).instance())
 
 func clear():
-	for child in get_children():
-		if !child.is_in_group("keep"):
-				print("removed " + child.name)
-				self.remove_child(child)
+	for child in get_children(): # parses through all children
+		if !child.is_in_group("keep"): # passes over all of the nodes we don't want to remove
+				self.remove_child(child) # removes the rest
 		
 
 
