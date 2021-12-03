@@ -1,8 +1,26 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Scenes/playgame.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Art/sky.png" type="Texture" id=3]
+[ext_resource path="res://Scripts/scrollingBG.gd" type="Script" id=4]
 [ext_resource path="res://Scripts/gamebox.gd" type="Script" id=5]
+[ext_resource path="res://Fonts/slkscr.ttf" type="DynamicFontData" id=6]
+[ext_resource path="res://Scripts/score.gd" type="Script" id=7]
+
+[sub_resource type="Shader" id=7]
+code = "shader_type canvas_item;
+uniform float scroll_speed;
+void fragment(){
+    vec2 shifteduv = UV;
+    shifteduv .x += TIME * scroll_speed;
+    vec4 color = texture(TEXTURE, shifteduv);
+    COLOR = color;
+}"
+
+[sub_resource type="ShaderMaterial" id=8]
+shader = SubResource( 7 )
+shader_param/scroll_speed = null
 
 [sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 9.92435, 243.977 )
@@ -10,10 +28,31 @@ extents = Vector2( 9.92435, 243.977 )
 [sub_resource type="RectangleShape2D" id=6]
 extents = Vector2( 592.387, 17.8459 )
 
+[sub_resource type="DynamicFont" id=9]
+size = 24
+font_data = ExtResource( 6 )
+
+[sub_resource type="Theme" id=10]
+default_font = SubResource( 9 )
+
 [node name="celestial gamebox" type="Node2D"]
 script = ExtResource( 5 )
 
-[node name="walls" type="Node2D" parent="."]
+[node name="walls" type="Node2D" parent="." groups=["keep"]]
+
+[node name="TextureRect" type="TextureRect" parent="walls"]
+material = SubResource( 8 )
+margin_left = 17.0
+margin_top = 21.0
+margin_right = 1184.0
+margin_bottom = 479.0
+mouse_filter = 2
+texture = ExtResource( 3 )
+stretch_mode = 2
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": true
+}
 
 [node name="ColorRect" type="ColorRect" parent="walls"]
 margin_left = 12.0
@@ -22,7 +61,7 @@ margin_right = 22.0
 margin_bottom = 485.0
 color = Color( 0, 0, 0, 1 )
 __meta__ = {
-"_edit_use_anchors_": false
+"_edit_use_anchors_": true
 }
 
 [node name="StaticBody2D" type="StaticBody2D" parent="walls/ColorRect"]
@@ -38,7 +77,7 @@ margin_right = 1182.0
 margin_bottom = 24.0
 color = Color( 0, 0, 0, 1 )
 __meta__ = {
-"_edit_use_anchors_": false
+"_edit_use_anchors_": true
 }
 
 [node name="StaticBody2D" type="StaticBody2D" parent="walls/ColorRect3"]
@@ -54,7 +93,7 @@ margin_right = 1185.0
 margin_bottom = 484.0
 color = Color( 0, 0, 0, 1 )
 __meta__ = {
-"_edit_use_anchors_": false
+"_edit_use_anchors_": true
 }
 
 [node name="StaticBody2D" type="StaticBody2D" parent="walls/ColorRect4"]
@@ -70,7 +109,7 @@ margin_right = 1187.0
 margin_bottom = 483.0
 color = Color( 0, 0, 0, 1 )
 __meta__ = {
-"_edit_use_anchors_": false
+"_edit_use_anchors_": true
 }
 
 [node name="StaticBody2D" type="StaticBody2D" parent="walls/ColorRect2"]
@@ -79,8 +118,20 @@ __meta__ = {
 position = Vector2( 8.40958, 231.148 )
 shape = SubResource( 5 )
 
-[node name="player" parent="." instance=ExtResource( 2 )]
-position = Vector2( -48, -752 )
-
-[node name="play" parent="." instance=ExtResource( 1 )]
+[node name="play" parent="." groups=["keep"] instance=ExtResource( 1 )]
 position = Vector2( 589.855, 227.854 )
+
+[node name="player" parent="." instance=ExtResource( 2 )]
+position = Vector2( 86.0043, 251.274 )
+
+[node name="score" type="RichTextLabel" parent="."]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 843.0
+margin_top = -42.0
+margin_right = 1181.0
+margin_bottom = -2.0
+theme = SubResource( 10 )
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
