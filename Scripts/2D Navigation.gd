@@ -1,8 +1,6 @@
 extends Node2D
-var sfx
-
-func _ready():
-	sfx = $sfx
+onready var sfx = $sfx
+onready var url = $url
 	
 # This will be used to transfer pages to other pages in the 2D web sections of the game
 func _input(event):
@@ -26,17 +24,15 @@ func movepage(var pgto):
 	else:
 		var page = "res://Scenes/Sites/"+pgto+".tscn"
 		print(page)
-		
 		clear()
+		url.set_text("https://"+pgto+".bird")
 		add_child(load(page).instance())
 
 func clear():
 	for child in get_children():
-		if child.name.find("sfx") and child.name.find("Taskbar") == -1:
+		if !child.is_in_group("keep"):
 				print("removed " + child.name)
 				self.remove_child(child)
-		else:
-			pass
 		
 
 

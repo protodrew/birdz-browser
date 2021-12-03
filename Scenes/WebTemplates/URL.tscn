@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Fonts/Roboto.ttf" type="DynamicFontData" id=1]
+
+[sub_resource type="DynamicFont" id=7]
+size = 28
+font_data = ExtResource( 1 )
+
+[sub_resource type="Theme" id=8]
+default_font = SubResource( 7 )
+
+[node name="URL" type="RichTextLabel"]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 156.0
+margin_top = -1.0
+margin_right = 1041.0
+margin_bottom = 39.0
+theme = SubResource( 8 )
+text = "Test"
+__meta__ = {
+"_edit_use_anchors_": false
+}

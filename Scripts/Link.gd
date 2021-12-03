@@ -12,10 +12,7 @@ func _on_Area2D_input_event(_viewport, event, _shape_idx): # underscores mean it
 		for index in groups.size():
 			if "page" in groups[index]:
 				var pgname = groups[index].substr(5)
-				if pgname == "Hub" or "exit":
-					navhandler.movepage(groups[index].substr(5))
-				else:
-					navhandler.get_parent().movepage(pgname)
+				navhandler.movepage(pgname)
 					
 					
 				moved = true
