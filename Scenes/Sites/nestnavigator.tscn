@@ -1,0 +1,203 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://Scripts/webcamera.gd" type="Script" id=1]
+[ext_resource path="res://Fonts/Bubble Bobble.otf" type="DynamicFontData" id=2]
+[ext_resource path="res://Fonts/BRITANIC.TTF" type="DynamicFontData" id=3]
+[ext_resource path="res://Scripts/Link.gd" type="Script" id=4]
+[ext_resource path="res://Fonts/Roboto.ttf" type="DynamicFontData" id=5]
+
+[sub_resource type="DynamicFont" id=1]
+size = 100
+font_data = ExtResource( 2 )
+
+[sub_resource type="Theme" id=2]
+default_font = SubResource( 1 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 32
+use_filter = true
+font_data = ExtResource( 3 )
+
+[sub_resource type="Theme" id=4]
+default_font = SubResource( 3 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 24
+font_data = ExtResource( 5 )
+
+[sub_resource type="Theme" id=6]
+default_font = SubResource( 5 )
+
+[sub_resource type="RectangleShape2D" id=7]
+extents = Vector2( 301.629, 37.4583 )
+
+[node name="nestnavigator" type="Node2D"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_top = 38.0
+margin_right = 1280.0
+margin_bottom = 1451.4
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 626.145, 337.015 )
+current = true
+limit_left = 0
+limit_top = 0
+limit_right = 1280
+limit_bottom = 1423
+script = ExtResource( 1 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 310.0
+margin_top = 50.0
+margin_right = 934.0
+margin_bottom = 268.0
+mouse_filter = 2
+theme = SubResource( 2 )
+text = "Nest Navigator"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="."]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 20.0
+margin_top = 218.0
+margin_right = 990.0
+margin_bottom = 564.0
+mouse_filter = 2
+theme = SubResource( 4 )
+text = "The Birdz nest is still growing every day. We are early in the alpha of our technology, but we have some amazing creators we want to show you!
+
+Click the blue text. These are \"twigs\" that will take you to different places in the nest. Scroll down with the scroll wheel in the middle of your computer mouse to see even more of the page!"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="."]
+modulate = Color( 0, 0.0392157, 1, 1 )
+margin_left = 13.0
+margin_top = 652.0
+margin_right = 709.0
+margin_bottom = 1294.0
+mouse_filter = 2
+theme = SubResource( 6 )
+text = "Our developer's website with a really cool game!
+
+
+An amazing essay a fan of japanese \"anime\" wrote!
+
+
+a site to help you teach your kids about math!
+
+
+A cool site made by a lover of \"rock and roll\"
+
+
+An amazing travel and photography site
+
+
+(pending review) a travel agency selling their services right here on the nest!
+
+
+A cool piece of \"fan fiction\""
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Link" type="Node2D" parent="." groups=["page JohnathanHarrington"]]
+position = Vector2( 301.522, 677.941 )
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Area2D" type="Area2D" parent="Link"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Link/Area2D"]
+shape = SubResource( 7 )
+
+[node name="Link3" type="Node2D" parent="." groups=["page thankyoukiki"]]
+position = Vector2( 301.522, 773.941 )
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Area2D" type="Area2D" parent="Link3"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Link3/Area2D"]
+shape = SubResource( 7 )
+
+[node name="Link4" type="Node2D" parent="." groups=["page educatorz"]]
+position = Vector2( 299.522, 855.941 )
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Area2D" type="Area2D" parent="Link4"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Link4/Area2D"]
+shape = SubResource( 7 )
+
+[node name="Link5" type="Node2D" parent="." groups=["page metalTime"]]
+position = Vector2( 299.522, 943.941 )
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Area2D" type="Area2D" parent="Link5"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Link5/Area2D"]
+shape = SubResource( 7 )
+
+[node name="Link6" type="Node2D" parent="." groups=["page PHOTOGRAPHY"]]
+position = Vector2( 297.522, 1037.94 )
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Area2D" type="Area2D" parent="Link6"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Link6/Area2D"]
+shape = SubResource( 7 )
+
+[node name="Link2" type="Node2D" parent="." groups=["page vacation"]]
+position = Vector2( 299.522, 1135.94 )
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Area2D" type="Area2D" parent="Link2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Link2/Area2D"]
+shape = SubResource( 7 )
+
+[node name="Link7" type="Node2D" parent="." groups=["page sakura-kisses"]]
+position = Vector2( 297.522, 1237.94 )
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Area2D" type="Area2D" parent="Link7"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Link7/Area2D"]
+shape = SubResource( 7 )
+
+[connection signal="input_event" from="Link/Area2D" to="Link" method="_on_Area2D_input_event"]
+[connection signal="input_event" from="Link3/Area2D" to="Link3" method="_on_Area2D_input_event"]
+[connection signal="input_event" from="Link4/Area2D" to="Link4" method="_on_Area2D_input_event"]
+[connection signal="input_event" from="Link5/Area2D" to="Link5" method="_on_Area2D_input_event"]
+[connection signal="input_event" from="Link6/Area2D" to="Link6" method="_on_Area2D_input_event"]
+[connection signal="input_event" from="Link2/Area2D" to="Link2" method="_on_Area2D_input_event"]
+[connection signal="input_event" from="Link7/Area2D" to="Link7" method="_on_Area2D_input_event"]

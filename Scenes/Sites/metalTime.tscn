@@ -26,7 +26,8 @@ font_data = ExtResource( 4 )
 [sub_resource type="Theme" id=6]
 default_font = SubResource( 5 )
 
-[node name="metal" type="Node2D"]
+[node name="metal-loverz" type="Node2D"]
+position = Vector2( 2, 34 )
 
 [node name="ColorRect" type="ColorRect" parent="."]
 margin_top = 38.0

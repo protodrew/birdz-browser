@@ -102,12 +102,12 @@ margin_right = 1209.0
 margin_bottom = 688.0
 mouse_filter = 2
 theme = SubResource( 2 )
-text = "Click here to learn more about the developer!"
+text = "Check out all our sites!"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Link" type="Node2D" parent="." groups=["page devsite"]]
+[node name="Link" type="Node2D" parent="." groups=["page nestnavigator"]]
 position = Vector2( 1072.47, 657.313 )
 scale = Vector2( 0.5, 0.3 )
 script = ExtResource( 2 )
