@@ -1,0 +1,123 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://Scripts/webcamera.gd" type="Script" id=1]
+[ext_resource path="res://Art/discs.png" type="Texture" id=2]
+[ext_resource path="res://Fonts/CHILLER.TTF" type="DynamicFontData" id=3]
+[ext_resource path="res://Fonts/BRITANIC.TTF" type="DynamicFontData" id=4]
+
+[sub_resource type="DynamicFont" id=3]
+size = 75
+font_data = ExtResource( 3 )
+
+[sub_resource type="Theme" id=4]
+default_font = SubResource( 3 )
+
+[sub_resource type="DynamicFont" id=1]
+size = 170
+font_data = ExtResource( 3 )
+
+[sub_resource type="Theme" id=2]
+default_font = SubResource( 1 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 24
+font_data = ExtResource( 4 )
+
+[sub_resource type="Theme" id=6]
+default_font = SubResource( 5 )
+
+[node name="metal" type="Node2D"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_top = 38.0
+margin_right = 1280.0
+margin_bottom = 1451.4
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 626.145, 337.015 )
+current = true
+limit_left = 0
+limit_top = 0
+limit_right = 1280
+limit_bottom = 1423
+script = ExtResource( 1 )
+
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_right = 1280.0
+margin_bottom = 1504.0
+texture = ExtResource( 2 )
+stretch_mode = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="."]
+modulate = Color( 1, 0, 0, 1 )
+margin_left = 146.0
+margin_top = 277.0
+margin_right = 1260.0
+margin_bottom = 560.0
+theme = SubResource( 4 )
+text = "THE MOST HARDCORE FANPAGE YOU'LL 
+ FIND ANYWHERE ON THE INTERNET "
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+modulate = Color( 1, 0, 0, 1 )
+margin_left = 171.0
+margin_top = 76.0
+margin_right = 1104.0
+margin_bottom = 274.0
+theme = SubResource( 2 )
+text = "BESTIAL FLESH"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+margin_left = 309.0
+margin_top = 508.0
+margin_right = 888.0
+margin_bottom = 1289.0
+mouse_filter = 2
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="."]
+margin_left = 324.0
+margin_top = 516.0
+margin_right = 905.0
+margin_bottom = 1305.0
+theme = SubResource( 6 )
+text = "REALLY, IF YOU CANT ANSWER ALL OF THESE QUESTIONS WITHOUT GOGGLING LIKE SOME SORT OF LOSER, THEN I'M NOT GOING TO ENTERTAIN THE THOUGHT OF YOUR EXISTENCE WITH ANOTHER THOUGHT
+
+Q1) HOW MANY TIMES DID COLLEEN UNDERDOG INHALE SHARPLY BEFORE 2:15.4 ON THE TRACK \"POPPY FLOWERS ON FIRE\"?
+
+A) 73
+B) 31
+C) 84
+D) 2
+
+Q2) AT WHAT DECIBAL WAS PROFESSOR TRIGGERBITE'S FOURTH HEARTBEAT DURING THE ORIGINAL EDIT OF \"YOU ARE WHAT THE PEOPLE SAY\"?
+
+A) 120.2
+B) 12.45
+C) 79.4
+D) 99.33
+
+Q3) WHAT IS MY FAVORITE ANIMAL?
+
+A) PORCUPINES
+B) ELEPHANTS
+C) ANY AMPHIBIAN WITH A SCARF
+D) PEOPLE FROM FINLAND"
+__meta__ = {
+"_edit_use_anchors_": false
+}

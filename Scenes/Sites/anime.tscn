@@ -1,0 +1,95 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://Scripts/webcamera.gd" type="Script" id=1]
+[ext_resource path="res://Art/aniem2.png" type="Texture" id=2]
+[ext_resource path="res://Fonts/HelloMorgan.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://Fonts/Calibri.ttf" type="DynamicFontData" id=4]
+
+[sub_resource type="DynamicFont" id=1]
+size = 90
+outline_size = 3
+outline_color = Color( 0.921569, 0, 0.172549, 1 )
+font_data = ExtResource( 3 )
+
+[sub_resource type="Theme" id=2]
+default_font = SubResource( 1 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 50
+outline_size = 1
+font_data = ExtResource( 3 )
+
+[sub_resource type="Theme" id=4]
+default_font = SubResource( 3 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 30
+outline_size = 90
+outline_color = Color( 0.0901961, 0.0352941, 0.0352941, 1 )
+font_data = ExtResource( 4 )
+
+[sub_resource type="Theme" id=6]
+default_font = SubResource( 5 )
+
+[node name="animesite" type="Node2D"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_top = 38.0
+margin_right = 1280.0
+margin_bottom = 1451.4
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 626.145, 337.015 )
+current = true
+limit_left = 0
+limit_top = 0
+limit_right = 1280
+limit_bottom = 1423
+script = ExtResource( 1 )
+
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_left = -22.0
+margin_top = 29.0
+margin_right = 1299.0
+margin_bottom = 1487.0
+texture = ExtResource( 2 )
+stretch_mode = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+margin_left = 37.0
+margin_top = 89.0
+margin_right = 937.0
+margin_bottom = 304.0
+theme = SubResource( 2 )
+text = "oh how i love u"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="."]
+margin_left = 39.0
+margin_top = 229.0
+margin_right = 1219.0
+margin_bottom = 352.0
+theme = SubResource( 4 )
+text = "a letter to the epitome of a coming of age story"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="."]
+margin_left = 60.0
+margin_top = 338.0
+margin_right = 1153.0
+margin_bottom = 997.0
+theme = SubResource( 6 )
+text = "There are many people in this world who, as time has marched on, have begun to feel an amount of... regret as this world has continued to march on its merry way. We all are firmly aware of it, that moment where childhood has slowly swept us on by. That realization that once you reach a certain point, a certain moment of time, we stop thinking about \"how to succeed\" and more \"how to be happy\". Kiki's Delivery Services, a movie that highlights the moments of a youth moving on by them, perfectly highlights that transition. And that transition can really, hardly, be considered one that should be overlooked, no matter your age. Kiki's transformation really hits the moment that she hits a point of \"too much\". She \"burns out\", as I like to put it. an exhaustion that hardly befits her age as she realizes, herself, that Kiki can only lie down in helplessness and realize there's only so much that she can do. She's a child, but even if she wasn't, who can be expected to work for so long, and to what ends? We can sympathize with her because we realize that what she's going through isn't right, it isn't appropriate, and then we stand ourselves up and do these things ourselves. And, more importantly, to ourselves. How can we really pretend that we're all \"alright\"? Kiki collapses under the weight of it all, and through the support of her friends, is able to pick herself back up. But she realizes, before she gets back up, that she needs to slow down. She cannot be expected to continue this without love, without a time to breathe and say \"that's enough\". She must be given a moment to heal after running so long with a wounded limb, and so must we. Thank you, Kiki."
+__meta__ = {
+"_edit_use_anchors_": false
+}

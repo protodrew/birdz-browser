@@ -1,0 +1,79 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Scripts/webcamera.gd" type="Script" id=1]
+[ext_resource path="res://Fonts/Calibri.ttf" type="DynamicFontData" id=2]
+
+[sub_resource type="DynamicFont" id=1]
+size = 28
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 2 )
+
+[sub_resource type="Theme" id=2]
+default_font = SubResource( 1 )
+
+[node name="blanksite" type="Node2D"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_top = 38.0
+margin_right = 1280.0
+margin_bottom = 1451.4
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 626.145, 337.015 )
+current = true
+limit_left = 0
+limit_top = 0
+limit_right = 1280
+limit_bottom = 1423
+script = ExtResource( 1 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 65.0
+margin_top = 260.0
+margin_right = 1201.0
+margin_bottom = 1682.0
+theme = SubResource( 2 )
+text = "Chapter 72
+
+You suppose you resent her for it.
+
+Of course, even admitting to something like that feels immature. It’s akin to a child digging their heels in the ground and looking a parent in the eye when asked to do the laundry because it’s their responsibility saying, “Well, I didn’t ask to be born in the first place!”
+
+But it’s not like Sakura gave birth to you. In fact, she likely didn’t even consider you a “you” in the first place. Not her fault, once again, since it stems from a self-hatred that you’ve inherited and an inability to consider herself anything human-like that you haven’t. It still baffles you how someone who doesn’t even think they deserve to exist can be so selfish. Well, you’d be hypocritical to critique her for it.
+
+You’re “her”, but you’re “not her”. Meltrylith and Passionlip and the rest of the Sakura Five are “you”, but they’re “not you”. Every single one of you resents the person above for shelling off unnecessary traits to the next person in line, and Sakura’s blissfully unaware of it all, wallowing in her own pity as she clings to that person like some sort of virus.
+
+More than being born, you resent her for forcing you to fall in love and then be left without it.
+
+Whoever said “It is better to have loved and lost rather than never love at all” was a fool, because you kill yourself on television to get senpai to notice you with cheeriness so painstakingly desperate it comes off as fake and wonder why the hell you’re even trying. You’re never going to get a kind word from that person, you’re never going to get an ounce of empathy, and you don’t blame her; if you were in her position, you’d surely hate you, too.
+
+So it’s this damning existence where you fight for an ideal you’re painfully aware will never be reached, can never be reached, like you’re running up an escalator because if you stop you’ll hurt yourself.
+
+Well-- there’s all that, and…
+
+The idea of that person staying alive, staying safe, being happy, you can feed yourself on those ideals alone.
+
+(you don’t sleep, but you still have dreams of her thanking you, someday.)
+"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="."]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 64.0
+margin_top = 135.0
+margin_right = 1200.0
+margin_bottom = 227.0
+focus_mode = 2
+theme = SubResource( 2 )
+text = "SAKURA KISSES
+a fan-created work of fiction by xX_0MasterManXx"
+selection_enabled = true
+__meta__ = {
+"_edit_use_anchors_": false
+}

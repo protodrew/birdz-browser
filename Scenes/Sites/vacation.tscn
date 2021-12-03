@@ -1,0 +1,171 @@
+[gd_scene load_steps=20 format=2]
+
+[ext_resource path="res://Scripts/webcamera.gd" type="Script" id=1]
+[ext_resource path="res://Art/ocean.png" type="Texture" id=2]
+[ext_resource path="res://Fonts/BRITANIC.TTF" type="DynamicFontData" id=3]
+[ext_resource path="res://Art/vacation pics.png" type="Texture" id=4]
+[ext_resource path="res://Fonts/BELL.TTF" type="DynamicFontData" id=5]
+[ext_resource path="res://Fonts/Lloyd2011.ttf" type="DynamicFontData" id=6]
+[ext_resource path="res://Fonts/Calibri.ttf" type="DynamicFontData" id=7]
+[ext_resource path="res://Art/real ppl.png" type="Texture" id=8]
+[ext_resource path="res://Art/buttont.png" type="Texture" id=9]
+
+[sub_resource type="DynamicFont" id=1]
+size = 65
+font_data = ExtResource( 3 )
+
+[sub_resource type="Theme" id=2]
+default_font = SubResource( 1 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 30
+font_data = ExtResource( 5 )
+
+[sub_resource type="Theme" id=4]
+default_font = SubResource( 3 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 50
+font_data = ExtResource( 6 )
+
+[sub_resource type="Theme" id=6]
+default_font = SubResource( 5 )
+
+[sub_resource type="DynamicFont" id=7]
+size = 25
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 7 )
+
+[sub_resource type="Theme" id=8]
+default_font = SubResource( 7 )
+
+[sub_resource type="DynamicFont" id=9]
+size = 40
+outline_size = 1
+font_data = ExtResource( 7 )
+
+[sub_resource type="Theme" id=10]
+default_font = SubResource( 9 )
+
+[node name="vacation" type="Node2D"]
+__meta__ = {
+"_edit_vertical_guides_": [ -230.0 ]
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_top = 38.0
+margin_right = 1280.0
+margin_bottom = 1451.4
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 626.145, 337.015 )
+current = true
+limit_left = 0
+limit_top = 0
+limit_right = 1280
+limit_bottom = 1423
+script = ExtResource( 1 )
+
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_left = -32.0
+margin_top = 18.0
+margin_right = 1647.0
+margin_bottom = 1668.0
+texture = ExtResource( 2 )
+stretch_mode = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+margin_left = 109.0
+margin_top = 99.0
+margin_right = 1403.0
+margin_bottom = 499.0
+theme = SubResource( 2 )
+text = "GO ON THE TRIP OF YOUR LIFETIME...
+                 FOR FREE!"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VacationPics" type="Sprite" parent="."]
+position = Vector2( 604, 417 )
+texture = ExtResource( 4 )
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="."]
+margin_left = 130.0
+margin_top = 556.0
+margin_right = 1138.0
+margin_bottom = 674.0
+theme = SubResource( 4 )
+text = "          AIDED BY THE GENEROSITY OF OUR FAIR AMERICAN GOVERNMENT, WE HAVE BEEN GRANTED THE OPPORTUNITY TO 
+	  FULFILL THE DREAMS OF THE AVERAGE MAN... LIKE YOU!"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RealPpl" type="Sprite" parent="."]
+position = Vector2( 557, 932 )
+texture = ExtResource( 8 )
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="."]
+margin_left = 47.0
+margin_top = 749.0
+margin_right = 1186.0
+margin_bottom = 966.0
+rect_pivot_offset = Vector2( 389, 186 )
+theme = SubResource( 6 )
+text = "don't believe us? read these reviews..."
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel4" type="RichTextLabel" parent="."]
+margin_left = 288.0
+margin_top = 927.0
+margin_right = 610.0
+margin_bottom = 1046.0
+theme = SubResource( 8 )
+text = " Truly the best trip of my life! 
+  It thoroughly revitalized my 
+relationship with my husband.
+        - Rebecca Jefferson"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel5" type="RichTextLabel" parent="."]
+margin_left = 874.0
+margin_top = 915.0
+margin_right = 1196.0
+margin_bottom = 1053.0
+theme = SubResource( 8 )
+text = "  A dream of mine fulfilled.
+  I really thought it had been
+too good to be true, but I'm glad I took that leap of faith.
+- Frederick von Crinkleberry"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Buttont" type="Sprite" parent="."]
+position = Vector2( 619, 1289 )
+scale = Vector2( 0.497085, 0.516892 )
+texture = ExtResource( 9 )
+
+[node name="RichTextLabel6" type="RichTextLabel" parent="."]
+margin_left = 390.0
+margin_top = 1115.0
+margin_right = 900.0
+margin_bottom = 1208.0
+theme = SubResource( 10 )
+text = "but why take their word for it?
+	     try it out yourself!"
+__meta__ = {
+"_edit_use_anchors_": false
+}
