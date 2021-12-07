@@ -41,7 +41,6 @@ position = Vector2( -283.356, -19.9173 )
 shape = SubResource( 6 )
 
 [node name="Link2" type="Node2D" parent="." groups=["page back"]]
-visible = false
 position = Vector2( -246.527, 18.7383 )
 script = ExtResource( 1 )
 __meta__ = {
@@ -55,7 +54,6 @@ position = Vector2( -283.356, -19.9173 )
 shape = SubResource( 6 )
 
 [node name="Back" type="Sprite" parent="."]
-visible = false
 position = Vector2( -528.754, 0.155045 )
 scale = Vector2( 0.608005, 0.608005 )
 texture = ExtResource( 3 )

@@ -27,7 +27,7 @@ margin_left = 156.0
 margin_right = 1043.0
 margin_bottom = 32.0
 theme = SubResource( 2 )
-text = "https://hub.bird"
+text = "https://Hub.bird"
 __meta__ = {
 "_edit_use_anchors_": false
 }
