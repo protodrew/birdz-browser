@@ -8,7 +8,7 @@ var vspeed = 150
 var velocity =  Vector2.ZERO
 
 
-func _process(delta):
+func _process(_delta):
 	
 	cancontrol = get_parent().playing
 	

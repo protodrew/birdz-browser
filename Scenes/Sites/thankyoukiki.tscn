@@ -33,14 +33,6 @@ default_font = SubResource( 5 )
 
 [node name="thankyoukiki" type="Node2D"]
 
-[node name="ColorRect" type="ColorRect" parent="."]
-margin_top = 38.0
-margin_right = 1280.0
-margin_bottom = 1451.4
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( 626.145, 337.015 )
 current = true
@@ -49,6 +41,14 @@ limit_top = 0
 limit_right = 1280
 limit_bottom = 1423
 script = ExtResource( 4 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_top = 38.0
+margin_right = 1280.0
+margin_bottom = 1451.4
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="TextureRect" type="TextureRect" parent="."]
 margin_left = -22.0

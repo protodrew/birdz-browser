@@ -15,7 +15,7 @@ func reset():
 	text = "Score: 0"
 	sc = 0
 
-func _process(delta):
+func _process(_delta):
 	if get_parent().playing:
 		if st <= 0:
 			if name == "score":

@@ -23,7 +23,7 @@ func lose():
 	add_child(player.instance())
 	add_child(playbutton.instance())
 
-func _process(delta):
+func _process(_delta):
 	if Input.is_action_just_pressed("pause") and playing:
 			add_child(playbutton.instance())
 			playing = false

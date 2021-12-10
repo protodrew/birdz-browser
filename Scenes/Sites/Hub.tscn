@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Art/Hub bkg.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/Link.gd" type="Script" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Fonts/Roboto.ttf" type="DynamicFontData" id=4]
 [ext_resource path="res://Art/squeesh.png" type="Texture" id=5]
 [ext_resource path="res://Art/river.png" type="Texture" id=6]
+[ext_resource path="res://Scripts/webcamera.gd" type="Script" id=7]
 
 [sub_resource type="DynamicFont" id=8]
 font_data = ExtResource( 4 )
@@ -85,8 +86,9 @@ tracks/0/keys = {
 [node name="Hub" type="Node2D"]
 
 [node name="HubBkg" type="Sprite" parent="."]
-position = Vector2( 639.986, 375.692 )
+position = Vector2( 0, 36 )
 texture = ExtResource( 1 )
+centered = false
 region_filter_clip = true
 
 [node name="Button" type="Sprite" parent="."]
@@ -147,5 +149,14 @@ position = Vector2( 367.081, 567.559 )
 scale = Vector2( 0.603362, 0.603362 )
 texture = ExtResource( 5 )
 hframes = 3
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 0, 100 )
+current = true
+limit_left = 0
+limit_top = 0
+limit_right = 1280
+limit_bottom = 720
+script = ExtResource( 7 )
 
 [connection signal="input_event" from="Link/Area2D" to="Link" method="_on_Area2D_input_event"]
