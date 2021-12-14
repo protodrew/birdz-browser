@@ -19,7 +19,7 @@ scale = Vector2( 1.02969, 1.025 )
 texture = ExtResource( 2 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2( 626.145, 337.015 )
+position = Vector2( 0, 100 )
 current = true
 limit_left = 0
 limit_top = 0

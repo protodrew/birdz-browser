@@ -8,7 +8,6 @@ func _ready():
 func _process(_delta):
 	if get_child_count() > 0:
 		var scrollbar = self.get_child(0)
-		print(scrollbar.position.y)
 func _input(event):
 	if event is InputEventMouseButton:
 		if event.is_pressed():

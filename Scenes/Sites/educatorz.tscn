@@ -94,7 +94,7 @@ modulate = Color( 0, 0, 0, 1 )
 margin_left = 55.0
 margin_top = 807.0
 margin_right = 1184.0
-margin_bottom = 1398.0
+margin_bottom = 1428.0
 theme = SubResource( 6 )
 text = "When referring to the above image, one can witness the occurrence of five apples. Shortly afterwards, the three green apples are removed. If you have five apples, then count backwards three times, you can figure out how many are left after that fact, can you not? Five, four, three. The next number, two, is the result that we've been searching for. 
 

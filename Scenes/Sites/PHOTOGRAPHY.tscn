@@ -3,16 +3,7 @@
 [ext_resource path="res://Scripts/webcamera.gd" type="Script" id=1]
 [ext_resource path="res://Art/photographie.png" type="Texture" id=2]
 
-[node name="blanksite" type="Node2D"]
-
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2( 626.145, 379.015 )
-current = true
-limit_left = 0
-limit_top = 0
-limit_right = 1280
-limit_bottom = 720
-script = ExtResource( 1 )
+[node name="blanksite" type="Node2D" groups=["music"]]
 
 [node name="ColorRect" type="ColorRect" parent="."]
 margin_top = 80.0
@@ -26,3 +17,12 @@ __meta__ = {
 position = Vector2( 641, 403.25 )
 scale = Vector2( 1.03047, 1.07529 )
 texture = ExtResource( 2 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 0, 100 )
+current = true
+limit_left = 0
+limit_top = 0
+limit_right = 1280
+limit_bottom = 720
+script = ExtResource( 1 )
