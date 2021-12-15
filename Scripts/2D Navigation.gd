@@ -50,7 +50,7 @@ func playmus(pgto):
 			song.loop = true;
 			music.set_stream(song)
 			music.play()
-			print("cum")
+
 
 func clear():
 	for child in get_children(): # parses through all children

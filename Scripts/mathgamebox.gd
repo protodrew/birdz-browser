@@ -13,9 +13,13 @@ func play():
 func lose():
 	for child in get_children():
 		if !child.is_in_group("keep"):
-			print("removed: " + child.name)
 			child.queue_free()
 	playing = false
+	level = 1
+	timer = 0
+	stage = 0
+	print(score)
+	score = 0
 	add_child(playbutton.instance())
 
 func _process(_delta):
@@ -30,10 +34,8 @@ func _process(_delta):
 			var targetn = target.instance()
 			add_child(targetn)
 			targetn.position = Vector2(rng.randi_range(60,1120),rng.randi_range(60, 420))
-			timer = int(400 * level)
+			timer = int(150 * level)
 			stage += 1
-		if stage >= 5:
+		if stage >= 3:
 			stage = 0
 			level -= 0.05
-			print("cock")
-			

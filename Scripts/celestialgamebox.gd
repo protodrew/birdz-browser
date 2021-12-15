@@ -16,7 +16,6 @@ func play():
 func lose():
 	for child in get_children():
 		if !child.is_in_group("keep"):
-			print("removed: " + child.name)
 			child.queue_free()
 	score.reset()
 	playing = false
