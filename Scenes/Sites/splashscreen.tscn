@@ -22,7 +22,7 @@ margin_bottom = 720.0
 grow_horizontal = 2
 grow_vertical = 2
 stream = ExtResource( 2 )
-volume_db = 24.0
+volume_db = 10.0
 autoplay = true
 __meta__ = {
 "_edit_use_anchors_": false

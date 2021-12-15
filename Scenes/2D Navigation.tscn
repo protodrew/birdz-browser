@@ -17,6 +17,7 @@ script = ExtResource( 2 )
 [node name="sfx" type="AudioStreamPlayer" parent="." groups=["keep"]]
 
 [node name="music" type="AudioStreamPlayer" parent="." groups=["keep"]]
+volume_db = -5.0
 
 [node name="Taskbar" parent="." groups=["keep"] instance=ExtResource( 3 )]
 

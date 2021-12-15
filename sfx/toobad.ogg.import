@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/toobad.ogg-44a62630c9f926f7c10220fc42d35fad.oggstr"
+
+[deps]
+
+source_file="res://sfx/toobad.ogg"
+dest_files=[ "res://.import/toobad.ogg-44a62630c9f926f7c10220fc42d35fad.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

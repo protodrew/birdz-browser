@@ -9,6 +9,7 @@ func _ready():
 	
 func _on_play_input_event(_viewport, event, _shape_idx):
 	if (event is InputEventMouseButton and event.pressed and event.button_index == 1):
+		print("penis")
 		gamebox.play()
 		gamebox.playing = true
 		gamebox.remove_child(self)

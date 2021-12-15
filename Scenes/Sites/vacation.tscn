@@ -1,14 +1,14 @@
 [gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://Scripts/webcamera.gd" type="Script" id=1]
-[ext_resource path="res://Art/ocean.png" type="Texture" id=2]
+[ext_resource path="res://Scenes/Art/ocean.png" type="Texture" id=2]
 [ext_resource path="res://Fonts/BRITANIC.TTF" type="DynamicFontData" id=3]
-[ext_resource path="res://Art/vacation pics.png" type="Texture" id=4]
+[ext_resource path="res://Scenes/Art/vacation pics.png" type="Texture" id=4]
 [ext_resource path="res://Fonts/BELL.TTF" type="DynamicFontData" id=5]
 [ext_resource path="res://Fonts/Lloyd2011.ttf" type="DynamicFontData" id=6]
 [ext_resource path="res://Fonts/Calibri.ttf" type="DynamicFontData" id=7]
-[ext_resource path="res://Art/real ppl.png" type="Texture" id=8]
-[ext_resource path="res://Art/buttont.png" type="Texture" id=9]
+[ext_resource path="res://Scenes/Art/real ppl.png" type="Texture" id=8]
+[ext_resource path="res://Scenes/Art/buttont.png" type="Texture" id=9]
 
 [sub_resource type="DynamicFont" id=1]
 size = 65

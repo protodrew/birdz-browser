@@ -35,7 +35,6 @@ func _process(_delta):
 			var asteroidn = asteroid.instance()
 			add_child(asteroidn)
 			asteroidn.position = Vector2(1100,rng.randi_range(75, 444))
-			spawn = false;
 			spawn = 200 * lvl
 			lvl += .1
 		

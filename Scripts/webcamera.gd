@@ -4,7 +4,7 @@ var scrollpos
 
 func _ready():
 	if limit_bottom > 720:
-		var scrollbar = add_child(load("res://Scenes/WebTemplates/scrollbar.tscn").instance())
+		var scrollbar = add_child(load("res://Scenes/WebTemplates/Scrollbar.tscn").instance())
 func _process(_delta):
 	if get_child_count() > 0:
 		var scrollbar = self.get_child(0)

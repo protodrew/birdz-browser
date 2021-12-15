@@ -1,6 +1,8 @@
 extends Area2D
-
+var rng = RandomNumberGenerator.new()
+onready var sprite = $Sprite
 func _ready():
+	sprite.frame = rng.randi_range(0, 3)
 	global_position = position
 func _on_Area2D_body_entered(body):
 	if "player" in body.name:

@@ -57,7 +57,6 @@ func clear():
 		if !child.is_in_group("keep"): # passes over all of the nodes we don't want to remove
 				self.remove_child(child) # removes the rest
 
-
 func _on_sfx_finished():
 	if sfx.stream == load("res://sfx/exit.ogg"):
 		get_tree().quit()

@@ -1,0 +1,82 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Scenes/playgame.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scripts/celestialgamebox.gd" type="Script" id=5]
+
+[sub_resource type="RectangleShape2D" id=7]
+extents = Vector2( 9.92435, 243.977 )
+
+[sub_resource type="RectangleShape2D" id=8]
+extents = Vector2( 592.387, 17.8459 )
+
+[node name="gamebox" type="Node2D"]
+script = ExtResource( 5 )
+
+[node name="walls" type="Node2D" parent="." groups=["keep"]]
+
+[node name="ColorRect" type="ColorRect" parent="walls"]
+margin_left = 12.0
+margin_top = 11.0
+margin_right = 22.0
+margin_bottom = 485.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="walls/ColorRect"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="walls/ColorRect/StaticBody2D"]
+position = Vector2( -0.0756531, 233.977 )
+shape = SubResource( 7 )
+
+[node name="ColorRect3" type="ColorRect" parent="walls"]
+margin_left = 12.0
+margin_top = 11.0
+margin_right = 1182.0
+margin_bottom = 24.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="walls/ColorRect3"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="walls/ColorRect3/StaticBody2D"]
+position = Vector2( 589.447, 7.76026 )
+shape = SubResource( 8 )
+
+[node name="ColorRect4" type="ColorRect" parent="walls"]
+margin_left = 12.0
+margin_top = 475.0
+margin_right = 1185.0
+margin_bottom = 484.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="walls/ColorRect4"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="walls/ColorRect4/StaticBody2D"]
+position = Vector2( 589.447, 1.42456 )
+shape = SubResource( 8 )
+
+[node name="ColorRect2" type="ColorRect" parent="walls"]
+margin_left = 1178.0
+margin_top = 11.0
+margin_right = 1187.0
+margin_bottom = 483.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="walls/ColorRect2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="walls/ColorRect2/StaticBody2D"]
+position = Vector2( 8.40958, 231.148 )
+shape = SubResource( 7 )
+
+[node name="play" parent="." groups=["keep"] instance=ExtResource( 1 )]
+position = Vector2( 589.855, 227.854 )
