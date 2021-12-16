@@ -173,7 +173,7 @@ __meta__ = {
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Link2/Area2D"]
 shape = SubResource( 7 )
 
-[node name="Link7" type="Node2D" parent="." groups=["page sakura-kisses"]]
+[node name="Link7" type="Node2D" parent="." groups=["page sakurakisses"]]
 position = Vector2( 297.522, 1237.94 )
 script = ExtResource( 4 )
 __meta__ = {
