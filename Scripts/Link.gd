@@ -18,12 +18,9 @@ func _on_Area2D_input_event(_viewport, event, _shape_idx): # underscores mean it
 		if !moved:
 			print("error no page group")
 
-
 func _on_Area2D_mouse_entered():
-	print('uhh')
 	Input.set_custom_mouse_cursor(finger)
 
 
 func _on_Area2D_mouse_exited():
-	print('pbbt')
 	Input.set_custom_mouse_cursor(cursor)

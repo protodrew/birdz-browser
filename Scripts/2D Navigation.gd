@@ -13,20 +13,13 @@ func _ready():
 func _input(event):
 	if event is InputEventMouseButton and event.pressed and event.button_index == 1:
 		var snd = int(rand_range(1,4))
-		var click = load("res://sfx/mouse"+str(snd)+".ogg") # loads the mouse sound we are going to use for this click
-		click.loop = false; # disables looping
-		sfx.set_stream(click) # adds the mouse sound to the audio player
-		sfx.play() # plays the mouse sound
-		
+		playsfx("mouse"+str(snd)) # loads the mouse sound we are going to use for this click
 
 func movepage(var pgto):
 	pgto = pgto.to_lower()
 	match (pgto):
 		"exit":
-			var door = load("res://sfx/exit.ogg")
-			door.loop = false;
-			sfx.set_stream(door)
-			sfx.play()
+			playsfx("exit")
 		"back":
 			if index+1 <= last.size()-1:
 				var page = "res://Scenes/Sites/"+last[index+1]+".tscn"
@@ -50,7 +43,11 @@ func playmus(pgto):
 			song.loop = true;
 			music.set_stream(song)
 			music.play()
-
+func playsfx(sound):
+	sound = load("res://sfx/" + sound + ".ogg")
+	sound.loop = false;
+	sfx.set_stream(sound)
+	sfx.play()
 
 func clear():
 	for child in get_children(): # parses through all children
