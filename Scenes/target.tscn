@@ -7,7 +7,7 @@
 extents = Vector2( 23.7765, 24.0416 )
 
 [node name="target" type="Sprite"]
-position = Vector2( 1124.13, 428.816 )
+position = Vector2( 1118, 417 )
 texture = ExtResource( 2 )
 hframes = 14
 frame = 9

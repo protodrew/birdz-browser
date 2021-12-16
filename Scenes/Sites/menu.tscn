@@ -4,7 +4,7 @@
 [ext_resource path="res://Art/scroller .gdshader" type="Shader" id=2]
 [ext_resource path="res://Art/rainbow.jpeg" type="Texture" id=3]
 [ext_resource path="res://Scripts/menubg.gd" type="Script" id=4]
-[ext_resource path="res://Art/startMenu.png" type="Texture" id=5]
+[ext_resource path="res://Art/start memu agian-Sheet.png" type="Texture" id=5]
 [ext_resource path="res://Scripts/Link.gd" type="Script" id=6]
 [ext_resource path="res://Scripts/menu.gd" type="Script" id=7]
 
@@ -57,7 +57,7 @@ __meta__ = {
 
 [node name="StartMenu" type="Sprite" parent="."]
 position = Vector2( 638.029, 357.434 )
-scale = Vector2( 0.849376, 0.703535 )
+scale = Vector2( 1.16403, 0.967704 )
 texture = ExtResource( 5 )
 hframes = 4
 

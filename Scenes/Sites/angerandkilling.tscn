@@ -3,7 +3,7 @@
 [ext_resource path="res://Scripts/webcamera.gd" type="Script" id=1]
 [ext_resource path="res://Art/anger and violence.png" type="Texture" id=2]
 
-[node name="blanksite" type="Node2D"]
+[node name="blanksite2" type="Node2D"]
 
 [node name="ColorRect" type="ColorRect" parent="."]
 margin_top = 38.0
