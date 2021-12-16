@@ -20,7 +20,7 @@ tracks/0/keys = {
 "values": [ 0, 2, 1 ]
 }
 
-[node name="Gif" type="Node2D"]
+[node name="Gif2" type="Node2D"]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "New Anim"
