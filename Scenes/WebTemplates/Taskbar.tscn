@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Scripts/Link.gd" type="Script" id=1]
 [ext_resource path="res://Art/taskbar.png" type="Texture" id=2]
 [ext_resource path="res://Art/back.png" type="Texture" id=3]
 [ext_resource path="res://Art/house.png" type="Texture" id=4]
+[ext_resource path="res://Art/exit.png" type="Texture" id=5]
 
 [sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 21.362, 17.7698 )
@@ -18,9 +19,6 @@ texture = ExtResource( 2 )
 [node name="exit" type="Node2D" parent="." groups=["page exit"]]
 position = Vector2( 326.256, 19.9248 )
 script = ExtResource( 1 )
-__meta__ = {
-"_edit_group_": true
-}
 
 [node name="Area2D" type="Area2D" parent="exit"]
 
@@ -29,7 +27,9 @@ position = Vector2( 280.267, -19.471 )
 shape = SubResource( 5 )
 
 [node name="Exit" type="Sprite" parent="exit"]
-position = Vector2( -326.256, -19.9248 )
+position = Vector2( 280.871, -18 )
+scale = Vector2( 0.75, 0.75 )
+texture = ExtResource( 5 )
 
 [node name="home" type="Node2D" parent="." groups=["page hub"]]
 position = Vector2( -335.522, 18.7383 )
@@ -45,7 +45,7 @@ position = Vector2( -283.356, -18 )
 shape = SubResource( 6 )
 
 [node name="Home" type="Sprite" parent="home"]
-position = Vector2( -284.478, -18.7383 )
+position = Vector2( -284.478, -18 )
 scale = Vector2( 0.8, 0.8 )
 texture = ExtResource( 4 )
 
@@ -63,7 +63,7 @@ position = Vector2( -283.356, -18 )
 shape = SubResource( 6 )
 
 [node name="Back" type="Sprite" parent="back"]
-position = Vector2( -282.227, -18.5833 )
+position = Vector2( -282.227, -18 )
 texture = ExtResource( 3 )
 
 [connection signal="input_event" from="exit/Area2D" to="exit" method="_on_Area2D_input_event"]
