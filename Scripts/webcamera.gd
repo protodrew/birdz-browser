@@ -7,10 +7,8 @@ func _ready():
 		if x == "drag":
 			drag = true
 	if limit_bottom > 720 and drag == false:
-		var scrollbar = add_child(load("res://Scenes/WebTemplates/Scrollbar.tscn").instance())
-func _process(_delta):
-	if get_child_count() > 0:
-		var scrollbar = self.get_child(0)
+		add_child(load("res://Scenes/WebTemplates/Scrollbar.tscn").instance())
+
 func _input(event):
 	if event is InputEventMouseButton:
 		if event.is_pressed():

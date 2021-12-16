@@ -37,12 +37,9 @@ func movepage(var pgto):
 			playmus(pgto)
 		
 func playmus(pgto):
-	for child in get_children():
-		if child.is_in_group("music"):
-			var song = load("res://music/" + pgto.to_lower() + ".ogg")
-			song.loop = true;
-			music.set_stream(song)
-			music.play()
+	var song = load("res://music/" + pgto.to_lower() + ".ogg")
+	music.set_stream(song)
+	music.play()
 
 func playsfx(sound):
 	sound = load("res://sfx/" + sound + ".ogg")

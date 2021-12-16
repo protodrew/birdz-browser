@@ -6,7 +6,7 @@ var current = Vector2.ZERO
 func _ready():
   set_process_input(true)
 
-func _process(delta):
+func _process(_delta):
 	if Input.is_action_just_pressed("click"):
 		start = get_viewport().get_mouse_position()
 	if Input.is_action_pressed("click"):
