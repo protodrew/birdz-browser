@@ -8,7 +8,7 @@ var drgmove = false
 # This will be used to transfer pages to other pages in the 2D web sections of the game
 
 func _ready():
-	movepage("menu")
+	movepage("intro")
 
 func _input(event):
 	if event is InputEventMouseButton and event.pressed and event.button_index == 1:
@@ -27,7 +27,7 @@ func movepage(var pgto):
 				index += 1
 				clear()
 				add_child(load(page).instance())
-				playmus(pgto)
+				playmus(last[index])
 		_:
 			var page = "res://Scenes/Sites/"+pgto+".tscn"
 			last.push_front(pgto)
