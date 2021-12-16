@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Fonts/Calibri.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Scripts/webcamera.gd" type="Script" id=2]
+[ext_resource path="res://Scenes/WebTemplates/sakuraSpin.tscn" type="PackedScene" id=3]
 
 [sub_resource type="DynamicFont" id=1]
 size = 28
@@ -77,3 +78,10 @@ limit_top = 0
 limit_right = 1280
 limit_bottom = 1423
 script = ExtResource( 2 )
+
+[node name="f" parent="." instance=ExtResource( 3 )]
+position = Vector2( 1096, 131 )
+
+[node name="f2" parent="." instance=ExtResource( 3 )]
+position = Vector2( 901, 236 )
+scale = Vector2( 0.64, 0.64428 )
