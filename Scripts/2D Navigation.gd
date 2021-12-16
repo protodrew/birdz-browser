@@ -8,7 +8,7 @@ var drgmove = false
 # This will be used to transfer pages to other pages in the 2D web sections of the game
 
 func _ready():
-	movepage("hub")
+	movepage("menu")
 
 func _input(event):
 	if event is InputEventMouseButton and event.pressed and event.button_index == 1:
