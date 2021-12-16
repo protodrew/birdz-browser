@@ -20,7 +20,7 @@ func _input(event):
 		
 
 func movepage(var pgto):
-	 
+	pgto = pgto.to_lower()
 	match (pgto):
 		"exit":
 			var door = load("res://sfx/exit.ogg")

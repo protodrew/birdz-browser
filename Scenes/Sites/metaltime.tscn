@@ -27,7 +27,7 @@ font_data = ExtResource( 4 )
 default_font = SubResource( 5 )
 
 [node name="metal-loverz" type="Node2D"]
-position = Vector2( 2, 34 )
+position = Vector2( 0, 34 )
 
 [node name="ColorRect" type="ColorRect" parent="."]
 margin_top = 38.0

@@ -162,3 +162,5 @@ limit_bottom = 720
 script = ExtResource( 7 )
 
 [connection signal="input_event" from="Link/Area2D" to="Link" method="_on_Area2D_input_event"]
+[connection signal="mouse_entered" from="Link/Area2D" to="Link" method="_on_Area2D_mouse_entered"]
+[connection signal="mouse_exited" from="Link/Area2D" to="Link" method="_on_Area2D_mouse_exited"]

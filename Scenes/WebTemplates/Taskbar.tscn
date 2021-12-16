@@ -59,5 +59,11 @@ scale = Vector2( 0.608005, 0.608005 )
 texture = ExtResource( 3 )
 
 [connection signal="input_event" from="exit/Area2D" to="exit" method="_on_Area2D_input_event"]
+[connection signal="mouse_entered" from="exit/Area2D" to="exit" method="_on_Area2D_mouse_entered"]
+[connection signal="mouse_exited" from="exit/Area2D" to="exit" method="_on_Area2D_mouse_exited"]
 [connection signal="input_event" from="home/Area2D" to="home" method="_on_Area2D_input_event"]
+[connection signal="mouse_entered" from="home/Area2D" to="home" method="_on_Area2D_mouse_entered"]
+[connection signal="mouse_exited" from="home/Area2D" to="home" method="_on_Area2D_mouse_exited"]
 [connection signal="input_event" from="back/Area2D" to="back" method="_on_Area2D_input_event"]
+[connection signal="mouse_entered" from="back/Area2D" to="back" method="_on_Area2D_mouse_entered"]
+[connection signal="mouse_exited" from="back/Area2D" to="back" method="_on_Area2D_mouse_exited"]

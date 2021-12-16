@@ -74,6 +74,7 @@ margin_left = -121.622
 margin_top = -84.7457
 margin_right = 121.378
 margin_bottom = 68.2543
+mouse_filter = 2
 theme = SubResource( 6 )
 text = "Start"
 __meta__ = {
@@ -123,6 +124,7 @@ margin_left = -121.622
 margin_top = -84.7458
 margin_right = 121.378
 margin_bottom = 68.2542
+mouse_filter = 2
 theme = SubResource( 6 )
 text = "exit"
 __meta__ = {
@@ -144,4 +146,8 @@ position = Vector2( -110.274, 82.9656 )
 shape = SubResource( 1 )
 
 [connection signal="input_event" from="Link/Area2D" to="Link" method="_on_Area2D_input_event"]
+[connection signal="mouse_entered" from="Link/Area2D" to="Link" method="_on_Area2D_mouse_entered"]
+[connection signal="mouse_exited" from="Link/Area2D" to="Link" method="_on_Area2D_mouse_exited"]
 [connection signal="input_event" from="Link2/Area2D" to="Link2" method="_on_Area2D_input_event"]
+[connection signal="mouse_entered" from="Link2/Area2D" to="Link2" method="_on_Area2D_mouse_entered"]
+[connection signal="mouse_exited" from="Link2/Area2D" to="Link2" method="_on_Area2D_mouse_exited"]
