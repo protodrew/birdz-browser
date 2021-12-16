@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/petsite.ogg-6402646fd4329956d98f392144d3b637.oggstr"
+
+[deps]
+
+source_file="res://music/petsite.ogg"
+dest_files=[ "res://.import/petsite.ogg-6402646fd4329956d98f392144d3b637.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

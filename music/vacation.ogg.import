@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/vacation.ogg-9d0de184a3e68bf464c3e8197eb9128c.oggstr"
+
+[deps]
+
+source_file="res://music/vacation.ogg"
+dest_files=[ "res://.import/vacation.ogg-9d0de184a3e68bf464c3e8197eb9128c.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
