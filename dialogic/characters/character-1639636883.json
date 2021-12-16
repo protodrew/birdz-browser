@@ -1,0 +1,40 @@
+{
+	"color": "#ff9e3155",
+	"description": "",
+	"display_name": "",
+	"display_name_bool": false,
+	"id": "character-1639636883.json",
+	"mirror_portraits": false,
+	"name": "V.I.A",
+	"nickname": "",
+	"nickname_bool": false,
+	"offset_x": 0,
+	"offset_y": 0,
+	"portraits": [
+		{
+			"name": "Default",
+			"path": "res://Art/V.I.A/happy.png"
+		},
+		{
+			"name": "sad",
+			"path": "res://Art/V.I.A/sad.png"
+		},
+		{
+			"name": "confused",
+			"path": "res://Art/V.I.A/confused.png"
+		},
+		{
+			"name": "counfused2",
+			"path": "res://Art/V.I.A/counfused2.png"
+		},
+		{
+			"name": "excited",
+			"path": "res://Art/V.I.A/excited.png"
+		},
+		{
+			"name": "happy2",
+			"path": "res://Art/V.I.A/happy2.png"
+		}
+	],
+	"scale": 100
+}

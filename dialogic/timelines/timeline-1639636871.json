@@ -1,0 +1,77 @@
+{
+	"events": [
+		{
+			"action": "join",
+			"character": "character-1639636883.json",
+			"event_id": "dialogic_002",
+			"mirror": true,
+			"portrait": "",
+			"position": {
+				"0": false,
+				"1": false,
+				"2": false,
+				"3": false,
+				"4": true
+			}
+		},
+		{
+			"character": "character-1639636883.json",
+			"event_id": "dialogic_001",
+			"portrait": "Default",
+			"text": "For centuries, humans have been driven by one purpose… to survive. "
+		},
+		{
+			"character": "",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "In order to do so, you have sought ways to communicate with one another. By forming connections, it becomes easier for a pack to survive rather than the individual."
+		},
+		{
+			"character": "",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "But unintentionally, you stumbled upon a side effect of communication…"
+		},
+		{
+			"character": "",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Bonds with one another!"
+		},
+		{
+			"character": "",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Suddenly, it was a possibility for all of you to not only survive, but thrive."
+		},
+		{
+			"character": "",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "There was more to life than just living for the next day. By talking to one another, you found that there are people to help and be helped by, friends that you can make, hopes that you can accomplish. "
+		},
+		{
+			"character": "",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "It was no longer a world to live in, but to be happy in."
+		},
+		{
+			"character": "",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Even now, you try to find new ways to connect to others. New ways to extend the purpose of living."
+		},
+		{
+			"character": "",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "And that’s why you’re here, isn’t it?"
+		}
+	],
+	"metadata": {
+		"dialogic-version": "1.3",
+		"file": "timeline-1639636871.json",
+		"name": "page system"
+	}
+}
