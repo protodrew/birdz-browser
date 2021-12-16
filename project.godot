@@ -71,6 +71,7 @@ enabled=PoolStringArray( "res://addons/dialogic/plugin.cfg" )
 
 cursor=false
 mouse=false
+shad=false
 
 [input]
 

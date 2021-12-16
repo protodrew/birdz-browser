@@ -1,300 +1,265 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
+[ext_resource path="res://Art/white.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/2D Navigation.gd" type="Script" id=2]
 [ext_resource path="res://Scenes/WebTemplates/Taskbar.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Fonts/Roboto.ttf" type="DynamicFontData" id=4]
 
 [sub_resource type="Shader" id=3]
-code = "//SHADER ORIGINALY CREADED BY \"TimothyLottes\" FROM SHADERTOY
-//PORTED AND MODIFYED TO GODOT BY AHOPNESS (@ahopness)
-//LICENSE : CC0
-//COMATIBLE WITH : GLES2, GLES3, WEBGL
-//SHADERTOY LINK : https://www.shadertoy.com/view/MsjXzh
+code = "/*
+Shader from Godot Shaders - the free shader library.
+godotshaders.com/shader/VHS-and-CRT-monitor-effect
 
-// PUBLIC DOMAIN CRT STYLED SCAN-LINE SHADER
-//
-//   by Timothy Lottes
-//
-// This is more along the style of a really good CGA arcade monitor.
-// With RGB inputs instead of NTSC.
-// The shadow mask example has the mask rotated 90 degrees for less chromatic aberration.
-//
-// Left it unoptimized to show the theory behind the algorithm.
-//
-// It is an example what I personally would want as a display option for pixel art games.
-// Please take and use, change, or whatever.
+This shader is under CC0 license. Feel free to use, improve and 
+change this shader according to your needs and consider sharing 
+the modified result to godotshaders.com.
+*/
 
 shader_type canvas_item;
 
-// Emulated input resolution.
-uniform vec2 res;
+//*** IMPORTANT! ***/ 
+// - If you are using this shader to affect the node it is applied to set 'overlay' to false (unchecked in the instepctor).
+// - If you are using this shader as an overlay, and want the shader to affect the nodes below in the Scene hierarchy,
+//   set 'overlay' to true (checked in the inspector).
+// On Mac there is potentially a bug causing this to not work properly. If that is the case and you want to use the shader as an overlay
+// change all \"overlay ? SCREEN_TEXTURE : TEXTURE\" to only \"SCREEN_TEXTURE\" on lines 129-140, and \"vec2 uv = overlay ? warp(SCREEN_UV) : warp(UV);\"
+// to \"vec2 uv = warp(SCREEN_UV);\" on line 98.
+uniform bool overlay = false;
 
-// Mask type
-//  0 = Very compressed TV style shadow mask
-//  1 = Stretched VGA style shadow mask (same as prior shaders)
-//  2 = VGA style shadow mask 
-uniform int mask_type :hint_range(0, 2) = 0;
+uniform float scanlines_opacity : hint_range(0.0, 1.0) = 0.4;
+uniform float scanlines_width : hint_range(0.0, 0.5) = 0.25;
+uniform float grille_opacity : hint_range(0.0, 1.0) = 0.3;
+uniform vec2 resolution = vec2(640.0, 480.0); // Set the number of rows and columns the texture will be divided in. Scanlines and grille will make a square based on these values
 
-// Bloom Type
-//  0 = Normalized exposure
-//  1 = Aditive bloom
-//  2 = No Bloom
-uniform int bloom_type :hint_range(0, 2) = 0;
+uniform bool pixelate = true; // Fill each square (\"pixel\") with a sampled color, creating a pixel look and a more accurate representation of how a CRT monitor would work.
 
-// Hardness of scanline.
-//  -8.0 = soft
-// -16.0 = medium
-uniform float hardScan :hint_range(-12.0, -1.0) = -8.0;
+uniform bool roll = true;
+uniform float roll_speed = 8.0; // Positive values are down, negative are up
+uniform float roll_size : hint_range(0.0, 100.0) = 15.0;
+uniform float roll_variation : hint_range(0.1, 5.0) = 1.8; // This valie is not an exact science. You have to play around with the value to find a look you like. How this works is explained in the code below.
+uniform float distort_intensity : hint_range(0.0, 0.2) = 0.05; // The distortion created by the rolling effect.
 
-// Hardness of pixels in scanline.
-// -2.0 = soft
-// -4.0 = hard
-uniform float hardPix :hint_range(-4.0, 0.0) = -2.0;
+uniform float noise_opacity : hint_range(0.0, 1.0) = 0.4;
+uniform float noise_speed = 5.0; // There is a movement in the noise pattern that can be hard to see first. This sets the speed of that movement.
 
-// Hardness of short vertical bloom.
-//  -1.0 = wide to the point of clipping (bad)
-//  -1.5 = wide
-//  -4.0 = not very wide at all
-uniform float hardBloomScan :hint_range(-4.0, 0.0) = -2.0;
+uniform float static_noise_intensity : hint_range(0.0, 1.0) = 0.06;
 
-// Hardness of short horizontal bloom.
-//  -0.5 = wide to the point of clipping (bad)
-//  -1.0 = wide
-//  -2.0 = not very wide at all
-uniform float hardBloomPix :hint_range(-2.0, 0.0) = -1.5;
+uniform float aberration : hint_range(-1.0, 1.0) = 0.03; // Chromatic aberration, a distortion on each color channel.
+uniform float brightness = 1.4; // When adding scanline gaps and grille the image can get very dark. Brightness tries to compensate for that.
+uniform bool discolor = true; // Add a discolor effect simulating a VHS
 
-// Amount of small bloom effect.
-//  1.0/1.0 = only bloom
-//  1.0/16.0 = what I think is a good amount of small bloom
-//  0.0     = no bloom
-uniform float bloomAmount :hint_range(1.0, 16.0) = 16.0;
+uniform float warp_amount :hint_range(0.0, 5.0) = 1.0; // Warp the texture edges simulating the curved glass of a CRT monitor or old TV.
+uniform bool clip_warp = false;
 
-// Display warp.
-// 0.0 = none
-// 1.0/8.0 = extreme
-uniform vec2 warp = vec2(64.0, 24.0); 
+uniform float vignette_intensity = 0.4; // Size of the vignette, how far towards the middle it should go.
+uniform float vignette_opacity : hint_range(0.0, 1.0) = 0.5;
 
-// Amount of shadow mask.
-uniform float maskDark  :hint_range(0.0, 1.0) = 0.5;
-uniform float maskLight :hint_range(1.0, 2.0) = 1.5;
+// Used by the noise functin to generate a pseudo random value between 0.0 and 1.0
+vec2 random(vec2 uv){
+    uv = vec2( dot(uv, vec2(127.1,311.7) ),
+               dot(uv, vec2(269.5,183.3) ) );
+    return -1.0 + 2.0 * fract(sin(uv) * 43758.5453123);
+}
 
-//------------------------------------------------------------------------
+// Generate a Perlin noise used by the distortion effects
+float noise(vec2 uv) {
+    vec2 uv_index = floor(uv);
+    vec2 uv_fract = fract(uv);
 
-// sRGB to Linear.
-// Assuing using sRGB typed textures this should not be needed.
-float ToLinear1(float c){ return(c <= 0.04045) ? c / 12.92 : pow((c + 0.055) / 1.055, 2.4); }
-vec3 ToLinear(vec3 c){ return vec3(ToLinear1(c.r), ToLinear1(c.g), ToLinear1(c.b)); }
+    vec2 blur = smoothstep(0.0, 1.0, uv_fract);
 
-// Linear to sRGB.
-// Assuing using sRGB typed textures this should not be needed.
-float ToSrgb1(float c){ return(c < 0.0031308?c * 12.92 : 1.055 * pow(c, 0.41666) - 0.055); }
-vec3 ToSrgb(vec3 c){ return vec3(ToSrgb1(c.r), ToSrgb1(c.g), ToSrgb1(c.b)); }
+    return mix( mix( dot( random(uv_index + vec2(0.0,0.0) ), uv_fract - vec2(0.0,0.0) ),
+                     dot( random(uv_index + vec2(1.0,0.0) ), uv_fract - vec2(1.0,0.0) ), blur.x),
+                mix( dot( random(uv_index + vec2(0.0,1.0) ), uv_fract - vec2(0.0,1.0) ),
+                     dot( random(uv_index + vec2(1.0,1.0) ), uv_fract - vec2(1.0,1.0) ), blur.x), blur.y) * 0.5 + 0.5;
+}
 
-// Nearest emulated sample given floating point position and texel offset.
-// Also zero's off screen.
-vec3 Fetch(vec2 pos, vec2 off, sampler2D iChannel0){
-	pos = floor(pos * res + off) / res;
+// Takes in the UV and warps the edges, creating the spherized effect
+vec2 warp(vec2 uv){
+	vec2 delta = uv - 0.5;
+	float delta2 = dot(delta.xy, delta.xy);
+	float delta4 = delta2 * delta2;
+	float delta_offset = delta4 * warp_amount;
 	
-	if(max(abs(pos.x - 0.5), abs(pos.y - 0.5)) > 0.5){
-		return vec3(0.0, 0.0, 0.0);
+	return uv + delta * delta_offset;
+}
+
+// Adds a black border to hide stretched pixel created by the warp effect
+float border (vec2 uv){
+	float radius = min(warp_amount, 0.08);
+	radius = max(min(min(abs(radius * 2.0), abs(1.0)), abs(1.0)), 1e-5);
+	vec2 abs_uv = abs(uv * 2.0 - 1.0) - vec2(1.0, 1.0) + radius;
+	float dist = length(max(vec2(0.0), abs_uv)) / radius;
+	float square = smoothstep(0.96, 1.0, dist);
+	return clamp(1.0 - square, 0.0, 1.0);
+}
+
+// Adds a vignette shadow to the edges of the image
+float vignette(vec2 uv){
+	uv *= 1.0 - uv.xy;
+	float vignette = uv.x * uv.y * 15.0;
+	return pow(vignette, vignette_intensity * vignette_opacity);
+}
+
+void fragment()
+{
+	vec2 uv = overlay ? warp(SCREEN_UV) : warp(UV); // Warp the uv. uv will be used in most cases instead of UV to keep the warping
+	vec2 text_uv = uv;
+	vec2 roll_uv = vec2(0.0);
+	float time = roll ? TIME : 0.0;
+	
+
+	// Pixelate the texture based on the given resolution.
+	if (pixelate)
+	{
+		text_uv = ceil(uv * resolution) / resolution;
 	}
 	
-	return ToLinear(texture(iChannel0 , pos.xy , -16.0).rgb);
-}
-
-// Distance in emulated pixels to nearest texel.
-vec2 Dist(vec2 pos){ 
-	pos = pos * res; 
-	return - ((pos - floor(pos)) - vec2(0.5));
-}
-    
-// 1D Gaussian.
-float Gaus(float pos, float scale){ return exp2(scale * pos * pos); }
-
-// 3-tap Gaussian filter along horz line.
-vec3 Horz3(vec2 pos, float off, sampler2D iChannel0){
-	vec3 b = Fetch(pos, vec2(-1.0, off), iChannel0);
-	vec3 c = Fetch(pos, vec2( 0.0, off), iChannel0);
-	vec3 d = Fetch(pos, vec2( 1.0, off), iChannel0);
-	float dst = Dist(pos).x;
-	
-	// Convert distance to weight.
-	float scale = hardPix;
-	float wb = Gaus(dst - 1.0, scale);
-	float wc = Gaus(dst + 0.0, scale);
-	float wd = Gaus(dst + 1.0, scale);
-	
-	// Return filtered sample.
-	return (b * wb + c * wc + d * wd) / (wb + wc + wd);
-}
-// 5-tap Gaussian filter along horz line.
-vec3 Horz5(vec2 pos, float off, sampler2D iChannel0){
-	vec3 a = Fetch(pos, vec2(-2.0, off), iChannel0);
-	vec3 b = Fetch(pos, vec2(-1.0, off), iChannel0);
-	vec3 c = Fetch(pos, vec2( 0.0, off), iChannel0);
-	vec3 d = Fetch(pos, vec2( 1.0, off), iChannel0);
-	vec3 e = Fetch(pos, vec2( 2.0, off), iChannel0);
-	float dst = Dist(pos).x;
-	
-	// Convert distance to weight.
-	float scale = hardPix;
-	float wa = Gaus(dst - 2.0, scale);
-	float wb = Gaus(dst - 1.0, scale);
-	float wc = Gaus(dst + 0.0, scale);
-	float wd = Gaus(dst + 1.0, scale);
-	float we = Gaus(dst + 2.0, scale);
-	
-	// Return filtered sample.
-	return (a * wa + b * wb + c * wc + d * wd + e * we) / (wa + wb + wc + wd + we);
-}
-// 7-tap Gaussian filter along horz line.
-vec3 Horz7(vec2 pos, float off, sampler2D iChannel0){
-	vec3 a = Fetch(pos, vec2(-3.0, off), iChannel0);
-	vec3 b = Fetch(pos, vec2(-2.0, off), iChannel0);
-	vec3 c = Fetch(pos, vec2( 1.0, off), iChannel0);
-	vec3 d = Fetch(pos, vec2( 0.0, off), iChannel0);
-	vec3 e = Fetch(pos, vec2( 1.0, off), iChannel0);
-	vec3 f = Fetch(pos, vec2( 2.0, off), iChannel0);
-	vec3 g = Fetch(pos, vec2( 3.0, off), iChannel0);
-	float dst = Dist(pos).x;
-	
-	// Convert distance to weight.
-	float scale = hardBloomPix;
-	float wa = Gaus(dst - 3.0, scale);
-	float wb = Gaus(dst - 2.0, scale);
-	float wc = Gaus(dst - 1.0, scale);
-	float wd = Gaus(dst + 0.0, scale);
-	float we = Gaus(dst + 1.0, scale);
-	float wf = Gaus(dst + 2.0, scale);
-	float wg = Gaus(dst + 3.0, scale);
-	
-	// Return filtered sample.
-	return (a * wa + b * wb + c * wc + d * wd + e * we + f * wf + g * wg) / (wa + wb + wc + wd + we + wf + wg);
-}
-
-// Return scanline weight.
-float Scan(vec2 pos, float off){
-	float dst = Dist(pos).y;
-	
-	return Gaus(dst + off, hardScan);
-}
-
-// Return scanline weight for bloom.
-float BloomScan(vec2 pos, float off){
-	float dst = Dist(pos).y;
-	
-	return Gaus(dst + off, hardBloomScan);
-}
-
-// Allow nearest three lines to effect pixel.
-vec3 Tri(vec2 pos, sampler2D iChannel0){
-	vec3 a = Horz3(pos,-1.0, iChannel0);
-	vec3 b = Horz5(pos, 0.0, iChannel0);
-	vec3 c = Horz3(pos, 1.0, iChannel0);
-	
-	float wa = Scan(pos,-1.0);
-	float wb = Scan(pos, 0.0);
-	float wc = Scan(pos, 1.0);
-	
-	return a * wa + b * wb + c * wc;
-}
-
-// Small bloom.
-vec3 Bloom(vec2 pos, sampler2D iChannel0){
-	vec3 a = Horz5(pos,-2.0, iChannel0);
-	vec3 b = Horz7(pos,-1.0, iChannel0);
-	vec3 c = Horz7(pos, 0.0, iChannel0);
-	vec3 d = Horz7(pos, 1.0, iChannel0);
-	vec3 e = Horz5(pos, 2.0, iChannel0);
-	
-	float wa = BloomScan(pos,-2.0);
-	float wb = BloomScan(pos,-1.0);
-	float wc = BloomScan(pos, 0.0);
-	float wd = BloomScan(pos, 1.0);
-	float we = BloomScan(pos, 2.0);
-	
-	return a * wa + b * wb + c * wc + d * wd + e * we;
-}
-
-// Distortion of scanlines, and end of screen alpha.
-vec2 Warp(vec2 pos){
-	pos = pos * 2.0 - 1.0;    
-	pos *= vec2(1.0 + (pos.y * pos.y) * 1.0 / warp.x, 1.0 + (pos.x * pos.x) * 1.0/ warp.y);
-	
-	return pos * 0.5+0.5;
-}
-
-vec3 Mask(vec2 pos){
-	if (mask_type == 0){
-		float line = maskLight;
-		float odd = 0.0;
-		
-		if(fract(pos.x / 6.0) < 0.5) odd = 1.0;
-		if(fract((pos.y + odd) / 2.0) < 0.5) line = maskDark;  
-		pos.x = fract(pos.x / 3.0);
-		
-		vec3 mask = vec3(maskDark, maskDark, maskDark);
-		if(pos.x < 0.333)mask.r = maskLight;
-		else if(pos.x < 0.666)mask.g = maskLight;
-		else mask.b = maskLight;
-		
-		mask *= line;
-		return mask;
-	}else if (mask_type == 1){
-		pos.x += pos.y * 3.0;
-		
-		vec3 mask = vec3(maskDark, maskDark, maskDark);
-		pos.x = fract(pos.x / 6.0);
-		if(pos.x < 0.333)mask.r = maskLight;
-		else if(pos.x < 0.666)mask.g = maskLight;
-		else mask.b = maskLight;
-		
-		return mask;
-	}else if (mask_type == 2){
-		pos.xy = floor(pos.xy * vec2(1.0, 0.5));
-		pos.x += pos.y * 3.0;
-		
-		vec3 mask = vec3(maskDark, maskDark, maskDark);
-		pos.x = fract(pos.x / 6.0);
-		if(pos.x < 0.333)mask.r = maskLight;
-		else if(pos.x < 0.666)mask.g = maskLight;
-		else mask.b = maskLight;
-	
-		return mask;
+	// Create the rolling effect. We need roll_line a bit later to make the noise effect.
+	// That is why this runs if roll is true OR noise_opacity is over 0.
+	float roll_line = 0.0;
+	if (roll || noise_opacity > 0.0)
+	{
+		// Create the areas/lines where the texture will be distorted.
+		roll_line = smoothstep(0.3, 0.9, sin(uv.y * roll_size - (time * roll_speed) ) );
+		// Create more lines of a different size and apply to the first set of lines. This creates a bit of variation.
+		roll_line *= roll_line * smoothstep(0.3, 0.9, sin(uv.y * roll_size * roll_variation - (time * roll_speed * roll_variation) ) );
+		// Distort the UV where where the lines are
+		roll_uv = vec2(( roll_line * distort_intensity * (1.-UV.x)), 0.0);
 	}
-  }    
-
-// Draw dividing bars.
-float Bar(float pos, float bar){ pos -= bar; return pos * pos < 4.0 ? 0.0 : 1.0; }
-
-// Entry.
-void fragment(){
-	vec2 pos = Warp(FRAGCOORD.xy / (1.0 / SCREEN_PIXEL_SIZE).xy);
 	
-	COLOR.rgb = Tri(pos, SCREEN_TEXTURE) * Mask(FRAGCOORD.xy);
-	if (bloom_type == 0){ 
-		COLOR.rgb = mix(COLOR.rgb,Bloom(pos, SCREEN_TEXTURE), 1.0 / bloomAmount);    
-	}else if (bloom_type == 1){
-		COLOR.rgb += Bloom(pos, SCREEN_TEXTURE) * 1.0 / bloomAmount;    
-	} 
+	vec4 text;
+	if (roll)
+	{
+		// If roll is true distort the texture with roll_uv. The texture is split up into RGB to 
+		// make some chromatic aberration. We apply the aberration to the red and green channels accorging to the aberration parameter
+		// and intensify it a bit in the roll distortion.
+		text.r = texture(SCREEN_TEXTURE, text_uv + roll_uv * 0.8 + vec2(aberration, 0.0) * .1).r;
+		text.g = texture(SCREEN_TEXTURE, text_uv + roll_uv * 1.2 - vec2(aberration, 0.0) * .1 ).g;
+		text.b = texture(SCREEN_TEXTURE, text_uv + roll_uv).b;
+		text.a = 1.0;
+	}
+	else
+	{
+		// If roll is false only apply the aberration without any distorion. The aberration values are very small so the .1 is only 
+		// to make the slider in the Inspector less sensitive.
+		text.r = texture(SCREEN_TEXTURE, text_uv + vec2(aberration, 0.0) * .1).r;
+		text.g = texture(SCREEN_TEXTURE, text_uv - vec2(aberration, 0.0) * .1).g;
+		text.b = texture(SCREEN_TEXTURE, text_uv).b;
+		text.a = 1.0;
+	}
 	
-	COLOR.a = 1.0;  
-	COLOR.rgb = ToSrgb(COLOR.rgb);
+	float r = text.r;
+	float g = text.g;
+	float b = text.b;
+	
+	uv = warp(UV);
+	
+	// CRT monitors don't have pixels but groups of red, green and blue dots or lines, called grille. We isolate the texture's color channels 
+	// and divide it up in 3 offsetted lines to show the red, green and blue colors next to each other, with a small black gap between.
+	if (grille_opacity > 0.0){
+		
+		float g_r = smoothstep(0.85, 0.95, abs(sin(uv.x * (resolution.x * 3.14159265))));
+		r = mix(r, r * g_r, grille_opacity);
+		
+		float g_g = smoothstep(0.85, 0.95, abs(sin(1.05 + uv.x * (resolution.x * 3.14159265))));
+		g = mix(g, g * g_g, grille_opacity);
+		
+		float b_b = smoothstep(0.85, 0.95, abs(sin(2.1 + uv.x * (resolution.x * 3.14159265))));
+		b = mix(b, b * b_b, grille_opacity);
+		
+	}
+	
+	// Apply the grille to the texture's color channels and apply Brightness. Since the grille and the scanlines (below) make the image very dark you
+	// can compensate by increasing the brightness.
+	text.r = clamp(r * brightness, 0.0, 1.0);
+	text.g = clamp(g * brightness, 0.0, 1.0);
+	text.b = clamp(b * brightness, 0.0, 1.0);
+	
+	// Scanlines are the horizontal lines that make up the image on a CRT monitor. 
+	// Here we are actual setting the black gap between each line, which I guess is not the right definition of the word, but you get the idea  
+	float scanlines = 0.5;
+	if (scanlines_opacity > 0.0)
+	{
+		// Same technique as above, create lines with sine and applying it to the texture. Smoothstep to allow setting the line size.
+		scanlines = smoothstep(scanlines_width, scanlines_width + 0.5, abs(sin(uv.y * (resolution.y * 3.14159265))));
+		text.rgb = mix(text.rgb, text.rgb * vec3(scanlines), scanlines_opacity);
+	}
+	
+	// Apply the banded noise.
+	if (noise_opacity > 0.0)
+	{
+		// Generate a noise pattern that is very stretched horizontally, and animate it with noise_speed
+		float noise = smoothstep(0.4, 0.5, noise(uv * vec2(2.0, 200.0) + vec2(10.0, (TIME * (noise_speed))) ) );
+		
+		// We use roll_line (set above) to define how big the noise should be vertically (multiplying cuts off all black parts).
+		// We also add in some basic noise with random() to break up the noise pattern above. The noise is sized according to 
+		// the resolution value set in the inspector. If you don't like this look you can 
+		// change \"ceil(uv * resolution) / resolution\" to only \"uv\" to make it less pixelated. Or multiply resolution with som value
+		// greater than 1.0 to make them smaller.
+		roll_line *= noise * scanlines * clamp(random((ceil(uv * resolution) / resolution) + vec2(TIME * 0.8, 0.0)).x + 0.8, 0.0, 1.0);
+		// Add it to the texture based on noise_opacity
+		text.rgb = clamp(mix(text.rgb, text.rgb + roll_line, noise_opacity), vec3(0.0), vec3(1.0));
+	}
+	
+	// Apply static noise by generating it over the whole screen in the same way as above
+	if (static_noise_intensity > 0.0)
+	{
+		text.rgb += clamp(random((ceil(uv * resolution) / resolution) + fract(TIME)).x, 0.0, 1.0) * static_noise_intensity;
+	}
+	
+	// Apply a black border to hide imperfections caused by the warping.
+	// Also apply the vignette
+	text.rgb *= border(uv);
+	text.rgb *= vignette(uv);
+	// Hides the black border and make that area transparent. Good if you want to add the the texture on top an image of a TV or monitor.
+	if (clip_warp)
+	{
+		text.a = border(uv);
+	}
+	
+	// Apply discoloration to get a VHS look (lower saturation and higher contrast)
+	// You can play with the values below or expose them in the Inspector.
+	float saturation = 0.5;
+	float contrast = 1.2;
+	if (discolor)
+	{
+		// Saturation
+		vec3 greyscale = vec3(text.r + text.g + text.b) / 3.;
+		text.rgb = mix(text.rgb, greyscale, saturation);
+		
+		// Contrast
+		float midpoint = pow(0.5, 2.2);
+		text.rgb = (text.rgb - vec3(midpoint)) * contrast + midpoint;
+	}
+	
+	COLOR = text;
 }"
 
 [sub_resource type="ShaderMaterial" id=4]
+render_priority = 127
 shader = SubResource( 3 )
-shader_param/res = null
-shader_param/mask_type = 0
-shader_param/bloom_type = 0
-shader_param/hardScan = -8.0
-shader_param/hardPix = -2.0
-shader_param/hardBloomScan = -2.0
-shader_param/hardBloomPix = -1.5
-shader_param/bloomAmount = 16.0
-shader_param/warp = Vector2( 64, 24 )
-shader_param/maskDark = 0.5
-shader_param/maskLight = 1.5
+shader_param/overlay = true
+shader_param/scanlines_opacity = 0.5
+shader_param/scanlines_width = 0.056
+shader_param/grille_opacity = 0.086
+shader_param/resolution = Vector2( 1280, 720 )
+shader_param/pixelate = true
+shader_param/roll = false
+shader_param/roll_speed = 2.0
+shader_param/roll_size = 0.0
+shader_param/roll_variation = 0.1
+shader_param/distort_intensity = 0.017
+shader_param/noise_opacity = 1.0
+shader_param/noise_speed = 2.0
+shader_param/static_noise_intensity = 0.173
+shader_param/aberration = 0.0
+shader_param/brightness = 1.1
+shader_param/discolor = false
+shader_param/warp_amount = 0.03
+shader_param/clip_warp = false
+shader_param/vignette_intensity = 1.0
+shader_param/vignette_opacity = 0.17
 
 [sub_resource type="DynamicFont" id=1]
 size = 24
@@ -304,7 +269,6 @@ font_data = ExtResource( 4 )
 default_font = SubResource( 1 )
 
 [node name="Nexus" type="Node2D"]
-material = SubResource( 4 )
 script = ExtResource( 2 )
 
 [node name="sfx" type="AudioStreamPlayer" parent="." groups=["keep"]]
@@ -312,13 +276,29 @@ script = ExtResource( 2 )
 [node name="music" type="AudioStreamPlayer" parent="." groups=["keep"]]
 volume_db = -5.0
 
+[node name="CanvasLayer" type="CanvasLayer" parent="." groups=["keep"]]
+layer = 20
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer" groups=["keep"]]
+modulate = Color( 1, 1, 1, 0.564706 )
+material = SubResource( 4 )
+margin_right = 1280.0
+margin_bottom = 720.0
+mouse_filter = 2
+texture = ExtResource( 1 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Taskbar" parent="." groups=["keep"] instance=ExtResource( 3 )]
 
 [node name="url" type="RichTextLabel" parent="." groups=["keep"]]
 modulate = Color( 0, 0, 0, 1 )
 margin_left = 156.0
+margin_top = 2.11893
 margin_right = 1043.0
-margin_bottom = 32.0
+margin_bottom = 34.1189
 theme = SubResource( 2 )
 text = "https://Hub.bird"
 __meta__ = {
