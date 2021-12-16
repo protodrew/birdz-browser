@@ -13,7 +13,7 @@ func _ready():
 func _input(event):
 	if event is InputEventMouseButton and event.pressed and event.button_index == 1:
 		var snd = int(rand_range(1,4))
-		playsfx("mouse"+str(snd)) # loads the mouse sound we are going to use for this click
+		playsfx("mouse"+str(snd))
 
 func movepage(var pgto):
 	pgto = pgto.to_lower()
@@ -43,6 +43,7 @@ func playmus(pgto):
 			song.loop = true;
 			music.set_stream(song)
 			music.play()
+
 func playsfx(sound):
 	sound = load("res://sfx/" + sound + ".ogg")
 	sound.loop = false;
