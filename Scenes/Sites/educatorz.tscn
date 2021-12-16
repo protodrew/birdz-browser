@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://Art/subtracting_apples.jpg" type="Texture" id=1]
 [ext_resource path="res://Art/pencil.png" type="Texture" id=2]
@@ -35,6 +35,21 @@ extents = Vector2( 9.92435, 243.977 )
 
 [sub_resource type="RectangleShape2D" id=8]
 extents = Vector2( 592.387, 17.8459 )
+
+[sub_resource type="DynamicFont" id=9]
+size = 40
+font_data = ExtResource( 3 )
+
+[sub_resource type="Theme" id=10]
+default_font = SubResource( 9 )
+
+[sub_resource type="DynamicFont" id=11]
+size = 40
+outline_color = Color( 0, 1, 0.109804, 1 )
+font_data = ExtResource( 3 )
+
+[sub_resource type="Theme" id=12]
+default_font = SubResource( 11 )
 
 [node name="educatorz" type="Node2D" groups=["music"]]
 position = Vector2( 0, 40 )
@@ -139,7 +154,7 @@ script = ExtResource( 5 )
 position = Vector2( 8.92941, 1458.97 )
 script = ExtResource( 6 )
 
-[node name="TextureRect" type="TextureRect" parent="gamebox"]
+[node name="bkg" type="TextureRect" parent="gamebox" groups=["keep"]]
 margin_left = 20.0
 margin_top = 12.9547
 margin_right = 1186.0
@@ -219,3 +234,23 @@ shape = SubResource( 7 )
 
 [node name="play" parent="gamebox" groups=["keep"] instance=ExtResource( 7 )]
 position = Vector2( 589.855, 227.854 )
+
+[node name="score" type="RichTextLabel" parent="gamebox" groups=["keep"]]
+margin_left = 31.0
+margin_top = 30.0
+margin_right = 386.0
+margin_bottom = 115.0
+theme = SubResource( 10 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="highscore" type="RichTextLabel" parent="gamebox" groups=["keep"]]
+margin_left = 567.0
+margin_top = -82.0
+margin_right = 1094.0
+margin_bottom = -12.0
+theme = SubResource( 12 )
+__meta__ = {
+"_edit_use_anchors_": false
+}

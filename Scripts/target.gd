@@ -5,6 +5,7 @@ onready var dietime = 400 * get_parent().level
 var clicked = false
 
 func _ready():
+	self.scale = Vector2(2,2)
 	rng.randomize()
 	frame = rng.randi_range(0, 13)
 	global_position = position
@@ -24,6 +25,8 @@ func _on_Area2D_input_event(viewport, event, shape_idx):
 		if frame < 10:
 			get_parent().score += 1
 			clicked = true
+			get_parent().get_parent().get_parent().playsfx("goodjob")
 			get_parent().remove_child(self)
 		else:
+			get_parent().get_parent().get_parent().playsfx("toobad")
 			get_parent().lose()

@@ -2,10 +2,13 @@ extends Node2D
 var playing = false
 onready var playbutton = load("res://Scenes/playgame.tscn")
 onready var target = load("res://Scenes/target.tscn")
+onready var scorecard = $score
+onready var highscorecard = $highscore
 var rng = RandomNumberGenerator.new()
 var level = 1
 var timer = 0
 var score = 0
+var highscore = 0
 var stage = 0
 func play():
 	playing = true
@@ -18,7 +21,8 @@ func lose():
 	level = 1
 	timer = 0
 	stage = 0
-	print(score)
+	if score > highscore:
+		highscore = score
 	score = 0
 	add_child(playbutton.instance())
 
@@ -26,8 +30,10 @@ func _process(_delta):
 	if Input.is_action_just_pressed("pause") and playing:
 			add_child(playbutton.instance())
 			playing = false
-	
+	highscorecard.text = "Highscore: " + str(highscore)
 	if playing:
+		scorecard.text = "Score: " + str(score)
+		
 		timer -= 1
 		if timer <= 0:
 			rng.randomize()
