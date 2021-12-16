@@ -17,55 +17,55 @@
 		{
 			"character": "character-1639636883.json",
 			"event_id": "dialogic_001",
-			"portrait": "Default",
+			"portrait": "sad",
 			"text": "For centuries, humans have been driven by one purpose… to survive. "
 		},
 		{
-			"character": "",
+			"character": "character-1639636883.json",
 			"event_id": "dialogic_001",
-			"portrait": "",
+			"portrait": "sad",
 			"text": "In order to do so, you have sought ways to communicate with one another. By forming connections, it becomes easier for a pack to survive rather than the individual."
 		},
 		{
-			"character": "",
+			"character": "character-1639636883.json",
 			"event_id": "dialogic_001",
-			"portrait": "",
+			"portrait": "sad",
 			"text": "But unintentionally, you stumbled upon a side effect of communication…"
 		},
 		{
-			"character": "",
+			"character": "character-1639636883.json",
 			"event_id": "dialogic_001",
-			"portrait": "",
+			"portrait": "excited",
 			"text": "Bonds with one another!"
 		},
 		{
-			"character": "",
+			"character": "character-1639636883.json",
 			"event_id": "dialogic_001",
-			"portrait": "",
+			"portrait": "happy2",
 			"text": "Suddenly, it was a possibility for all of you to not only survive, but thrive."
 		},
 		{
-			"character": "",
+			"character": "character-1639636883.json",
 			"event_id": "dialogic_001",
-			"portrait": "",
+			"portrait": "confused",
 			"text": "There was more to life than just living for the next day. By talking to one another, you found that there are people to help and be helped by, friends that you can make, hopes that you can accomplish. "
 		},
 		{
-			"character": "",
+			"character": "character-1639636883.json",
 			"event_id": "dialogic_001",
-			"portrait": "",
+			"portrait": "happy2",
 			"text": "It was no longer a world to live in, but to be happy in."
 		},
 		{
-			"character": "",
+			"character": "character-1639636883.json",
 			"event_id": "dialogic_001",
-			"portrait": "",
+			"portrait": "Default",
 			"text": "Even now, you try to find new ways to connect to others. New ways to extend the purpose of living."
 		},
 		{
-			"character": "",
+			"character": "character-1639636883.json",
 			"event_id": "dialogic_001",
-			"portrait": "",
+			"portrait": "counfused2",
 			"text": "And that’s why you’re here, isn’t it?"
 		}
 	],
