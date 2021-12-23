@@ -4,7 +4,6 @@ onready var music = $music
 onready var url = $url
 onready var last = ["hub"]
 var index = 0;
-var drgmove = false
 # This will be used to transfer pages to other pages in the 2D web sections of the game
 
 func _ready():
@@ -31,8 +30,8 @@ func movepage(var pgto):
 		_:
 			var page = "res://Scenes/Sites/"+pgto+".tscn"
 			last.push_front(pgto)
-			clear()
 			url.set_text("https://"+pgto+".bird")
+			clear()
 			add_child(load(page).instance())
 			playmus(pgto)
 		
@@ -50,7 +49,7 @@ func playsfx(sound):
 func clear():
 	for child in get_children(): # parses through all children
 		if !child.is_in_group("keep"): # passes over all of the nodes we don't want to remove
-				self.remove_child(child) # removes the rest
+				self.remove_child(child) # removes the rest 
 
 func _on_sfx_finished():
 	if sfx.stream == load("res://sfx/exit.ogg"):

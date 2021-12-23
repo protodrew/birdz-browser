@@ -1,0 +1,53 @@
+{
+	"events": [
+		{
+			"action": "join",
+			"character": "character-1639636883.json",
+			"event_id": "dialogic_002",
+			"mirror": false,
+			"portrait": "excited",
+			"position": {
+				"0": false,
+				"1": false,
+				"2": false,
+				"3": false,
+				"4": true
+			}
+		},
+		{
+			"character": "character-1639636883.json",
+			"event_id": "dialogic_001",
+			"portrait": "excited",
+			"text": "So it’s belated, but welcome!"
+		},
+		{
+			"character": "",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "I’m VIA, your Virtual Interactive Assistant!"
+		},
+		{
+			"character": "",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "I’m here to help you navigate Birdz Browser, a place where you can interact and form connections with people all across the world.\n"
+		},
+		{
+			"character": "",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "No matter where they might be, so long as they’re also using VIA, new friends are just a click away!"
+		},
+		{
+			"character": "",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Here, you see that our websites are organized into “nests”. By clicking and dragging the screen around, you can click on different nest icons and see what’s in the area!"
+		}
+	],
+	"metadata": {
+		"dialogic-version": "1.3",
+		"file": "timeline-1639650974.json",
+		"name": "intro2"
+	}
+}
